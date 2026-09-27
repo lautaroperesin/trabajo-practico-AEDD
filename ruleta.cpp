@@ -179,8 +179,10 @@ void ejecutarCicloPartidas(Numero ruleta[37], Jugador jugadores[], int cantJugad
 		
 		if (hayQuiebra) {
 			cout << "Fin de la sesion: Un jugador ha quedado sin fichas para jugar.";
+			esperar(3000);
 		} else if (totalGiros >= MAX_APUESTAS) {
 			cout << "Fin de la sesion: Se alcanzo el limite maximo de 1200 giros.";
+			esperar(3000);
 		} else {
 			cout << "Desea continuar con el siguiente giro? (S/N): ";
 			cin >> continuar;

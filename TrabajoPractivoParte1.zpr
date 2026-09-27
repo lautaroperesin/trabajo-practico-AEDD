@@ -15,7 +15,7 @@ tab_width=4
 tab_use_spaces=0
 explorer_path=.
 inherits_from=
-current_source=numero.cpp
+current_source=ruleta.cpp
 path_char=\
 [source]
 path=main.cpp
@@ -23,11 +23,11 @@ cursor=39:21
 open=true
 [source]
 path=ruleta.cpp
-cursor=158:11
+cursor=146:16
 open=true
 [source]
 path=jugador.cpp
-cursor=93:9
+cursor=89:17
 open=true
 [source]
 path=numero.cpp
@@ -35,7 +35,7 @@ cursor=170:28
 open=true
 [source]
 path=apuesta.cpp
-cursor=78:4
+cursor=47:31
 open=true
 [source]
 path=presentacion.cpp
