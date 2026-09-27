@@ -128,47 +128,47 @@ void guardarGiro(Numero numeros[], Numero nuevo, int pos){
 */
 void mostrarHistorial(Numero numeros[],int totalGiros){
 	color(15);
-	cout<<centrar("Historial de giros",207);
+	cout<<centrar("Historial de giros",150);
 	cout<<endl;
 	borde(8);
 	colorNormal();
 	
-	cout<<centrar ("Numero de giro", 51);
-	cout<<centrar ("Valor", 51);
-	cout<<centrar ("color", 51);
-	cout<<centrar ("paridad", 51);
+	cout<<centrar ("Numero de giro", 37);
+	cout<<centrar ("Valor", 37);
+	cout<<centrar ("color", 37);
+	cout<<centrar ("paridad", 37);
 	cout<<endl;
 	for(int i=0;i<totalGiros;i++) { 
 		string valor= to_string(obtenerValor(numeros[i]));
 		char colorN=obtenerColor(numeros[i]);
 		int paridad=obtenerParidad(numeros[i]);
-		cout<<centrar (to_string(i+1), 51);
-		cout<<centrar (valor, 51);
+		cout<<centrar (to_string(i+1), 37);
+		cout<<centrar (valor, 37);
 		
 		if(colorN=='V'){
 			color(2);
-			cout<<centrar ("Verde", 51);
+			cout<<centrar ("Verde", 37);
 			colorNormal();
 		}
 		else if(colorN=='N'){
 			color(15);
-			cout<<centrar ("Negro", 51);
+			cout<<centrar ("Negro",37);
 			colorNormal();
 		}
 		else{
 			color(4);
-			cout<<centrar ("Rojo", 51);
+			cout<<centrar ("Rojo", 37);
 			colorNormal();
 		}
 		
 		if(paridad==0){
-			cout<<centrar("No par, no impar", 51);
+			cout<<centrar("No par, no impar", 37);
 		}
 		else if(paridad==1){
-			cout<<centrar("Par", 51);
+			cout<<centrar("Par", 37);
 		}
 		else{
-			cout<<centrar("Impar", 51);
+			cout<<centrar("Impar", 37);
 		}
 		cout<<endl;
 	}
@@ -218,10 +218,14 @@ void mostrarEstadisticas(Numero numeros[],int totalGiros){
 		}
 	}
 	cout<<fixed<<setprecision(2);
+	color(15);
 	cout<<"Total de giros: "<<totalGiros<<endl;
-	cout<<"Porcentaje de pares: "<<(100*pares)/totalGiros<<endl;
-	cout<<"Porcentaje de impares: "<<(100*impares)/totalGiros<<endl;
-	cout<<"Porcentaje de ceros: "<<(100*ceros)/totalGiros<<endl;
+	cout<<"Porcentaje de pares: "<<(100*pares)/totalGiros<<"%"<<endl;
+	cout<<"Porcentaje de impares: "<<(100*impares)/totalGiros<<"%"<<endl;
+	color(2);
+	cout<<"Porcentaje de ceros: "<<(100*ceros)/totalGiros<<"%"<<endl;
+	color(4);
 	cout<<"Cantidad de rojos: "<<rojos<<endl;
+	color(15);
 	cout<<"Cantidad de negros: "<<negros<<endl;
 }
