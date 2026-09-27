@@ -2,6 +2,7 @@
 #include <iostream>
 #include "jugador.h"
 #include "ruleta.h"
+#include "presentacion.h"
 #include <iomanip>
 using namespace std;
 
@@ -25,11 +26,14 @@ using namespace std;
 */
 
 void cargarJugadores(Jugador jugadores[], int &cant){
-    do{
+    color(15);
+	do{
 		cout << "Cantidad de jugadores: ";
 		cin >> cant;
 		if(cant < 2 || cant > 6){
+			color(12);
 			cout << "La cantidad de jugadores debe estar entre 2 y 6" << endl;
+			color(15);
 		}
 	} while(cant < 2 || cant >6);
 	
@@ -55,6 +59,7 @@ void cargarJugadores(Jugador jugadores[], int &cant){
 ****************************************************/
 
 void mostrarEstadoJugadores(Jugador jugadores[], int cant){
+	color(15);
 	cout << "==ESTADO DE JUGADORES==" << endl;
 	
 	cout << left << setw(15) << "Nombre" << setw(15) << "Fichas"
@@ -81,10 +86,12 @@ void mostrarEstadoJugadores(Jugador jugadores[], int cant){
 bool jugadorSinFichas(Jugador jugadores[], int cant) {
 	for (int i = 0; i < cant; i++) {
 		if (jugadores[i].fichas <= 0) {
+			color(12);
 			cout << "El participante " << jugadores[i].nombre << " se quedo sin fichas" << endl;
 			return true;
 		}
 	}
+	color(15);
 	return false;
 }
 	

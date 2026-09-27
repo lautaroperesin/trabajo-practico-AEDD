@@ -155,8 +155,19 @@ void ejecutarCicloPartidas(Numero ruleta[37], Jugador jugadores[], int cantJugad
 		generarRuleta();
 		bola(obtenerValor(resultado));
 		limpiarPantalla();
+		switch (obtenerColor(resultado)){
+		case 'V':
+			color(2);
+			break;
+		case 'R':
+			color(4);
+			break;
+		case 'N':
+			color(15);
+			break;
+		}
 		cout << "Salio el numero: " << obtenerValor(resultado) << " (" << obtenerColor(resultado) << ")" << endl;
-		
+		color(15);
 		// 3. Escrutinio
 		escrutinio(jugadores, cantJugadores, resultado);
 		

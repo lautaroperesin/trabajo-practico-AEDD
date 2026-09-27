@@ -1,5 +1,6 @@
 #include "apuesta.h"
 #include "jugador.h"
+#include "presentacion.h"
 #include <iostream>
 using namespace std;
 
@@ -36,12 +37,15 @@ using namespace std;
 void cargarApuestas(Jugador jugadores[], int cant){
 	
 	for(int i = 0; i < cant; i++) { 
+		color(15);
 		cout << "El apostador: " << jugadores[i].nombre << endl;
-		cout << "Tiene " << jugadores[i].fichas << " fichas." << endl;
+		cout << "Tiene " << jugadores[i].fichas << "  fichas." << endl;
 		int apuesta = 0;
 		do{ 
 			cout << "¿Cuantas fichas desea apostar?" << endl;
+			color(10);//verde claro
 			cin >> apuesta;
+			color(15);//blanco brillante
 		} while( apuesta <= 0 || apuesta > jugadores[i].fichas );
 		
 		jugadores[i].apuestas[jugadores[i].tlApuestas].fichasJugadas = apuesta;
@@ -71,7 +75,11 @@ void cargarApuestas(Jugador jugadores[], int cant){
 		case 2:
 			cout << "Elegiste apostar a un color" << endl;
 			do{
-				cout << "Selecciona un color (R = Rojo, N = Negro)" << endl;
+				cout << "Selecciona un color:(";
+				color(4);//rojo
+				cout <<"R = Rojo";
+				color(15);//blanco brillante
+				cout<<", N = Negro)" << endl;
 				cin >> jugadores[i].apuestas[jugadores[i].tlApuestas].colorApostado;
 				if(jugadores[i].apuestas[jugadores[i].tlApuestas].colorApostado != 'N' &&
 				   jugadores[i].apuestas[jugadores[i].tlApuestas].colorApostado != 'R'){
@@ -97,6 +105,7 @@ void cargarApuestas(Jugador jugadores[], int cant){
 		
 		jugadores[i].tlApuestas++;
 	}
+	colorNormal();
 }
 
 	
