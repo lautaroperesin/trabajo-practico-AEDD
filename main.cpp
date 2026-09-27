@@ -10,12 +10,13 @@
 using namespace std;
 
 int main() {
+	const int ANCHO_VENTANA = 150;
 	//Presentacion
 	pantallaCompleta();
 	ocultarCursor();
-	tamanioVentana(207, 55);
+	tamanioVentana(ANCHO_VENTANA, 55);
 	Presentacion();
-	cout<<endl<<centrar("Presione ENTER para continuar...", 207 + 2);
+	cout<<endl<<centrar("Presione ENTER para continuar...", ANCHO_VENTANA);
 	mostrarCursor();
 	cin.get();
 	limpiarPantalla();
@@ -82,8 +83,8 @@ int main() {
 			break;
 		case 'X':
 		case 'x':
-			cout<<centrar("¿Estas seguro de que quieres salir?",207)<<endl;
-			cout<<centrar("Escribe para confirmar:",207);
+			cout<<centrar("¿Estas seguro de que quieres salir?",ANCHO_VENTANA)<<endl;
+			cout<<centrar("Escribe para confirmar:",ANCHO_VENTANA);
 			cin>>eleccion;
 			break;
 		default:

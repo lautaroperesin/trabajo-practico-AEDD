@@ -42,7 +42,7 @@ const int BLANCO_BRILL  = 15;
 * Se utiliza tanto para centrar.
 * ****************************************************************************************
 */
-const int ANCHO = 207;
+const int ANCHO = 148;
 
 /**
 * ****************************************************************************************
@@ -407,7 +407,7 @@ void Selector(bool condicion){
 	linea("X.- Salir de la aplicacion",ROJO,GRIS);
 	linea("",BLANCO,GRIS);
 	linea("Ingrese una opcion:",BLANCO_BRILL,GRIS);
-	gotoxy(114,14);
+	gotoxy(150 / 2 + 10 ,14);
 }
 	
 /**
@@ -474,142 +474,176 @@ void Despedida(){
 void generarRuleta(){
 	
 	color(BLANCO_BRILL);
-	cout<<centrar("######",ANCHO)<<endl;
-	cout<<centrar("##############################",ANCHO)<<endl;
-	cout<<centrar("#######                            #######",ANCHO)<<endl;
-	cout<<centrar("#####                                        #####",ANCHO)<<endl;
-	cout<<centrar("####                                                ####",ANCHO)<<endl;
-	cout<<centrar("###                                                        ###",ANCHO)<<endl;
-	cout<<centrar("####                                                            ####",ANCHO)<<endl;
-	cout<<centrar("###                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("####                                                                      ####",ANCHO)<<endl;
-	cout<<centrar("###                                                                          ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                              ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                                    ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                          ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                            ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                              ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                  ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                    ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                    ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                      ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                      ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                RULETESCA                                               ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                      ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                      ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                    ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                    ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                  ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                                ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                              ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                            ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                          ##",ANCHO)<<endl;
-	cout<<centrar("##                                                                                        ##",ANCHO)<<endl;
-	cout<<centrar("###                                                                                    ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                              ###",ANCHO)<<endl;
-	cout<<centrar("###                                                                          ###",ANCHO)<<endl;
-	cout<<centrar("####                                                                      ####",ANCHO)<<endl;
-	cout<<centrar("###                                                                  ###",ANCHO)<<endl;
-	cout<<centrar("####                                                            ####",ANCHO)<<endl;
-	cout<<centrar("###                                                        ###",ANCHO)<<endl;
-	cout<<centrar("####                                                ####",ANCHO)<<endl;
-	cout<<centrar("#####                                        #####",ANCHO)<<endl;
-	cout<<centrar("#######                            #######",ANCHO)<<endl;
-	cout<<centrar("##############################",ANCHO)<<endl;
-	cout<<centrar("######",ANCHO)<<endl;
 	
-	colorFondo(BLANCO_BRILL,VERDE_CLARO);
-	gotoxy(103,4);
-	cout<<"0";
+	cout << centrar("#####", ANCHO) << endl;
+	cout << centrar("##########################", ANCHO) << endl;
+	cout << centrar("######                            ######", ANCHO) << endl;
+	cout << centrar("####                                        ####", ANCHO) << endl;
+	cout << centrar("###                                                ###", ANCHO) << endl;
+	cout << centrar("##                                                        ##", ANCHO) << endl;
+	cout << centrar("###                                                            ###", ANCHO) << endl;
+	cout << centrar("##                                                                  ##", ANCHO) << endl;
+	cout << centrar("###                                                                      ###", ANCHO) << endl;
+	cout << centrar("##                                                                          ##", ANCHO) << endl;
+	cout << centrar("##                                                                              ##", ANCHO) << endl;
+	cout << centrar("##                                                                                  ##", ANCHO) << endl;
+	cout << centrar("##                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                        ##", ANCHO) << endl;
+	cout << centrar("##                                                                                          ##", ANCHO) << endl;
+	cout << centrar("##                                                                                            ##", ANCHO) << endl;
+	cout << centrar("##                                                                                              ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                  ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
 	
-	colorFondo(BLANCO_BRILL,ROJO);
-	gotoxy(111, 5);
-	cout<<"32";
-	gotoxy(126, 8);
-	cout<<"19";
-	gotoxy(137, 12);
-	cout<<"21";
-	gotoxy(145, 19);
-	cout<<"25";
-	gotoxy(149, 27);
-	cout<<"34";
-	gotoxy(146, 35);
-	cout<<"27";
-	gotoxy(139, 41);
-	cout<<"36";
-	gotoxy(128, 46);
-	cout<<"30";
-	gotoxy(115, 49);
-	cout<<"23";
-	gotoxy(99, 50);
-	cout<<"5";
-	gotoxy(83, 48);
-	cout<<"16";
-	gotoxy(71, 44);
-	cout<<"1";
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                  ##", ANCHO) << endl;
+	cout << centrar("##                                                                                                ##", ANCHO) << endl;
+	cout << centrar("##                                                                                              ##", ANCHO) << endl;
+	cout << centrar("##                                                                                            ##", ANCHO) << endl;
+	cout << centrar("##                                                                                          ##", ANCHO) << endl;
+	cout << centrar("##                                                                                        ##", ANCHO) << endl;
+	cout << centrar("##                                                                                    ##", ANCHO) << endl;
+	cout << centrar("##                                                                                  ##", ANCHO) << endl;
+	cout << centrar("##                                                                              ##", ANCHO) << endl;
+	cout << centrar("##                                                                          ##", ANCHO) << endl;
+	cout << centrar("###                                                                      ###", ANCHO) << endl;
+	cout << centrar("##                                                                  ##", ANCHO) << endl;
+	cout << centrar("###                                                            ###", ANCHO) << endl;
+	cout << centrar("##                                                        ##", ANCHO) << endl;
+	cout << centrar("###                                                ###", ANCHO) << endl;
+	cout << centrar("####                                        ####", ANCHO) << endl;
+	cout << centrar("######                            ######", ANCHO) << endl;
+	cout << centrar("##########################", ANCHO) << endl;
+	cout << centrar("#####", ANCHO) << endl;	
+	
+	
+	colorFondo(BLANCO_BRILL, VERDE_CLARO);
+	gotoxy(74, 4);
+	cout << "0";
+	
+	colorFondo(BLANCO_BRILL, ROJO);
+	
+	gotoxy(80, 5);
+	cout << "32";
+	
+	gotoxy(94, 7);
+	cout << "19";
+	
+	gotoxy(105, 10);
+	cout << "21";
+	
+	gotoxy(113, 15);
+	cout << "25";
+	
+	gotoxy(116, 21);
+	cout << "34";
+	
+	gotoxy(114, 27);
+	cout << "27";
+	
+	gotoxy(108, 32);
+	cout << "36";
+	
+	gotoxy(97, 36);
+	cout << "30";
+	
+	gotoxy(84, 39);
+	cout << "23";
+	
+	gotoxy(70, 39);
+	cout << "5";
+	
+	gotoxy(55, 38);
+	cout << "16";
+	
+	gotoxy(44, 35);
+	cout << "1";
+	
+	gotoxy(35, 30);
+	cout << "14";
+	
+	gotoxy(31, 24);
+	cout << "9";
+	
+	gotoxy(31, 18);
+	cout << "18";
+	
+	gotoxy(37, 13);
+	cout << "7";
+	
+	gotoxy(46, 8);
+	cout << "12";
+	
+	gotoxy(59, 5);
+	cout << "3";
+	
+	
+	colorFondo(BLANCO_BRILL, NEGRO);
+	
+	gotoxy(87, 5);
+	cout << "15";
+	
+	gotoxy(101, 8);
+	cout << "4";
+	
+	gotoxy(110, 13);
+	cout << "2";
+	
+	gotoxy(115, 18);
+	cout << "17";
+	
+	gotoxy(116, 24);
+	cout << "6";
+	
+	gotoxy(111, 30);
+	cout << "13";
+	
+	gotoxy(103, 35);
+	cout << "11";
+	
+	gotoxy(91, 38);
+	cout << "8";
+	
+	gotoxy(77, 39);
+	cout << "10";
+	
 	gotoxy(62, 39);
-	cout<<"14";
-	gotoxy(56, 31);
-	cout<<"9";
-	gotoxy(56, 23);
-	cout<<"18";
-	gotoxy(63, 15);
-	cout<<"7";
-	gotoxy(73, 9);
-	cout<<"12";
-	gotoxy(87, 6);
-	cout<<"3";
+	cout << "24";
 	
-	colorFondo(BLANCO_BRILL,NEGRO);
-	gotoxy(119, 6);
-	cout<<"15";
-	gotoxy(132, 10);
-	cout<<"4";
-	gotoxy(142, 15);
-	cout<<"2";
-	gotoxy(148, 23);
-	cout<<"17";
-	gotoxy(148, 31);
-	cout<<"6";
-	gotoxy(143, 38);
-	cout<<"13";
-	gotoxy(133, 44);
-	cout<<"11";
-	gotoxy(123, 48);
-	cout<<"8";
-	gotoxy(107, 50);
-	cout<<"10";
-	gotoxy(91, 49);
-	cout<<"24";
-	gotoxy(76, 46);
-	cout<<"33";
-	gotoxy(66, 42);
-	cout<<"20";
-	gotoxy(58, 35);
-	cout<<"31";
-	gotoxy(55, 27);
-	cout<<"22";
-	gotoxy(58, 19);
-	cout<<"29";
-	gotoxy(67, 12);
-	cout<<"28";
-	gotoxy(79, 7);
-	cout<<"35";
-	gotoxy(95, 5);
-	cout<<"26";	
+	gotoxy(49, 36);
+	cout << "33";
 	
+	gotoxy(38, 32);
+	cout << "20";
+	
+	gotoxy(32, 27);
+	cout << "31";
+	
+	gotoxy(30, 21);
+	cout << "22";
+	
+	gotoxy(33, 15);
+	cout << "29";
+	
+	gotoxy(41, 10);
+	cout << "28";
+	
+	gotoxy(52, 7);
+	cout << "35";
+	
+	gotoxy(66, 5);
+	cout << "26";
+	
+	colorNormal();
+	
+	gotoxy(69, 22);
+	cout << "RULETESCA";
 }
 
 /**
@@ -624,496 +658,538 @@ void generarRuleta(){
 * Imprime la bola, y muestra el numero ganador.
 * ****************************************************************************************
 */
-void bola(int ganador){
-	
-	srand(time(0));
-	int velocidad=100+rand()%100;
-	bool condicion=true;
-	color(BLANCO_BRILL);
-	while(condicion){
-		switch(velocidad%37){
-		case 0:
-			gotoxy(103, 5);   // 0
-			cout<<"O";
-			if(velocidad<38 and ganador==0){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(103, 5);
-				cout<<" ";
-			}
-			break;
+	void bola(int ganador){
+		
+		srand(time(0));
+		int velocidad = 100 + rand() % 80;
+		bool condicion = true;
+		color(BLANCO_BRILL);
+		
+		while(condicion){
 			
-		case 1:
-			gotoxy(111, 6);   // 32
-			cout<<"O";
-			if(velocidad<38 and ganador==32){
-				condicion=false;
+			switch(velocidad % 37){
+				
+			case 0:
+				gotoxy(74, 2);   // 0
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 0){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(74, 2);
+					cout << " ";
+				}
+				break;
+				
+			case 1:
+				gotoxy(82, 2);   // 32
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 32){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(82, 2);
+					cout << " ";
+				}
+				break;
+				
+			case 2:
+				gotoxy(89, 3);   // 15
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 15){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(89, 3);
+					cout << " ";
+				}
+				break;
+				
+			case 3:
+				gotoxy(97, 5);   // 19
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 19){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(97, 5);
+					cout << " ";
+				}
+				break;
+				
+			case 4:
+				gotoxy(104, 6);   // 4
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 4){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(104, 6);
+					cout << " ";
+				}
+				break;
+				
+			case 5:
+				gotoxy(110, 9);   // 21
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 21){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(110, 9);
+					cout << " ";
+				}
+				break;
+				
+			case 6:
+				gotoxy(114, 12);   // 2
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 2){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(114, 12);
+					cout << " ";
+				}
+				break;
+				
+			case 7:
+				gotoxy(118, 15);   // 25
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 25){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(118, 15);
+					cout << " ";
+				}
+				break;
+				
+			case 8:
+				gotoxy(120, 18);   // 17
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 17){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(120, 18);
+					cout << " ";
+				}
+				break;
+				
+			case 9:
+				gotoxy(121, 21);   // 34
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 34){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(121, 21);
+					cout << " ";
+				}
+				break;
+				
+			case 10:
+				gotoxy(121, 25);   // 6
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 6){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(121, 25);
+					cout << " ";
+				}
+				break;
+				
+			case 11:
+				gotoxy(119, 28);   // 27
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 27){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(119, 28);
+					cout << " ";
+				}
+				break;
+				
+			case 12:
+				gotoxy(116, 31);   // 13
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 13){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(116, 31);
+					cout << " ";
+				}
+				break;
+				
+			case 13:
+				gotoxy(112, 34);   // 36
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 36){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(112, 34);
+					cout << " ";
+				}
+				break;
+				
+			case 14:
+				gotoxy(107, 36);   // 11
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 11){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(107, 36);
+					cout << " ";
+				}
+				break;
+				
+			case 15:
+				gotoxy(100, 39);   // 30
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 30){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(100, 39);
+					cout << " ";
+				}
+				break;
+				
+			case 16:
+				gotoxy(93, 40);   // 8
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 8){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(93, 40);
+					cout << " ";
+				}
+				break;
+				
+			case 17:
+				gotoxy(86, 41);   // 23
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 23){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(86, 41);
+					cout << " ";
+				}
+				break;
+				
+			case 18:
+				gotoxy(78, 42);   // 10
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 10){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(78, 42);
+					cout << " ";
+				}
+				break;
+				
+			case 19:
+				gotoxy(69, 42);   // 5
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 5){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(69, 42);
+					cout << " ";
+				}
+				break;
+				
+			case 20:
+				gotoxy(61, 41);   // 24
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 24){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(61, 41);
+					cout << " ";
+				}
+				break;
+				
+			case 21:
+				gotoxy(54, 40);   // 16
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 16){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(54, 40);
+					cout << " ";
+				}
+				break;
+				
+			case 22:
+				gotoxy(47, 39);   // 33
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 33){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(47, 39);
+					cout << " ";
+				}
+				break;
+				
+			case 23:
+				gotoxy(40, 36);   // 1
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 1){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(40, 36);
+					cout << " ";
+				}
+				break;
+				
+			case 24:
+				gotoxy(35, 34);   // 20
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 20){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(35, 34);
+					cout << " ";
+				}
+				break;
+				
+			case 25:
+				gotoxy(31, 31);   // 14
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 14){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(31, 31);
+					cout << " ";
+				}
+				break;
+				
+			case 26:
+				gotoxy(28, 28);   // 31
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 31){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(28, 28);
+					cout << " ";
+				}
+				break;
+				
+			case 27:
+				gotoxy(26, 25);   // 9
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 9){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(26, 25);
+					cout << " ";
+				}
+				break;
+				
+			case 28:
+				gotoxy(26, 21);   // 22
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 22){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(26, 21);
+					cout << " ";
+				}
+				break;
+				
+			case 29:
+				gotoxy(27, 18);   // 18
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 18){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(27, 18);
+					cout << " ";
+				}
+				break;
+				
+			case 30:
+				gotoxy(29, 15);   // 29
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 29){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(29, 15);
+					cout << " ";
+				}
+				break;
+				
+			case 31:
+				gotoxy(33, 12);   // 7
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 7){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(33, 12);
+					cout << " ";
+				}
+				break;
+				
+			case 32:
+				gotoxy(37, 9);   // 28
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 28){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(37, 9);
+					cout << " ";
+				}
+				break;
+				
+			case 33:
+				gotoxy(43, 6);   // 12
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 12){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(43, 6);
+					cout << " ";
+				}
+				break;
+				
+			case 34:
+				gotoxy(50, 5);   // 35
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 35){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(50, 5);
+					cout << " ";
+				}
+				break;
+				
+			case 35:
+				gotoxy(58, 3);   // 3
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 3){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(58, 3);
+					cout << " ";
+				}
+				break;
+				
+			case 36:
+				gotoxy(65, 2);   // 26
+				cout << "O";
+				
+				if(velocidad < 38 and ganador == 26){
+					condicion = false;
+				}
+				else{
+					esperar(1000 / velocidad);
+					gotoxy(65, 2);
+					cout << " ";
+				}
+				break;
 			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(111, 6);
-				cout<<" ";
-			}
-			break;
 			
-		case 2:
-			gotoxy(117, 7);   // 15
-			cout<<"O";
-			if(velocidad<38 and ganador==15){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(117, 7);
-				cout<<" ";
-			}
-			break;
-			
-		case 3:
-			gotoxy(124, 9);   // 19
-			cout<<"O";
-			if(velocidad<38 and ganador==19){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(124, 9);
-				cout<<" ";
-			}
-			break;
-			
-		case 4:
-			gotoxy(130, 11);   // 4
-			cout<<"O";
-			if(velocidad<38 and ganador==4){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(130, 11);
-				cout<<" ";
-			}
-			break;
-			
-		case 5:
-			gotoxy(135, 13);   // 21
-			cout<<"O";
-			if(velocidad<38 and ganador==21){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(135, 13);
-				cout<<" ";
-			}
-			break;
-			
-		case 6:
-			gotoxy(139, 16);   // 2
-			cout<<"O";
-			if(velocidad<38 and ganador==2){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(139, 16);
-				cout<<" ";
-			}
-			break;
-			
-		case 7:
-			gotoxy(143, 20);   // 25
-			cout<<"O";
-			if(velocidad<38 and ganador==25){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(143, 20);
-				cout<<" ";
-			}
-			break;
-			
-		case 8:
-			gotoxy(146, 23);   // 17
-			cout<<"O";
-			if(velocidad<38 and ganador==17){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(146, 23);
-				cout<<" ";
-			}
-			break;
-			
-		case 9:
-			gotoxy(147, 27);   // 34
-			cout<<"O";
-			if(velocidad<38 and ganador==34){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(147, 27);
-				cout<<" ";
-			}
-			break;
-			
-		case 10:
-			gotoxy(146, 30);   // 6
-			cout<<"O";
-			if(velocidad<38 and ganador==6){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(146, 30);
-				cout<<" ";
-			}
-			break;
-			
-		case 11:
-			gotoxy(144, 34);   // 27
-			cout<<"O";
-			if(velocidad<38 and ganador==27){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(144, 34);
-				cout<<" ";
-			}
-			break;
-			
-		case 12:
-			gotoxy(142, 38);   // 13
-			cout<<"O";
-			if(velocidad<38 and ganador==13){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(142, 38);
-				cout<<" ";
-			}
-			break;
-			
-		case 13:
-			gotoxy(137, 40);   // 36
-			cout<<"O";
-			if(velocidad<38 and ganador==36){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(137, 40);
-				cout<<" ";
-			}
-			break;
-			
-		case 14:
-			gotoxy(131, 43);   // 11
-			cout<<"O";
-			if(velocidad<38 and ganador==11){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(131, 43);
-				cout<<" ";
-			}
-			break;
-			
-		case 15:
-			gotoxy(127, 45);   // 30
-			cout<<"O";
-			if(velocidad<38 and ganador==30){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(127, 45);
-				cout<<" ";
-			}
-			break;
-			
-		case 16:
-			gotoxy(122, 47);   // 8
-			cout<<"O";
-			if(velocidad<38 and ganador==8){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(122, 47);
-				cout<<" ";
-			}
-			break;
-			
-		case 17:
-			gotoxy(115, 48);   // 23
-			cout<<"O";
-			if(velocidad<38 and ganador==23){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(115, 48);
-				cout<<" ";
-			}
-			break;
-			
-		case 18:
-			gotoxy(107, 49);   // 10
-			cout<<"O";
-			if(velocidad<38 and ganador==10){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(107, 49);
-				cout<<" ";
-			}
-			break;
-			
-		case 19:
-			gotoxy(99, 49);   // 5
-			cout<<"O";
-			if(velocidad<38 and ganador==5){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(99, 49);
-				cout<<" ";
-			}
-			break;
-			
-		case 20:
-			gotoxy(92, 48);   // 24
-			cout<<"O";
-			if(velocidad<38 and ganador==24){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(92, 48);
-				cout<<" ";
-			}
-			break;
-			
-		case 21:
-			gotoxy(84, 47);   // 16
-			cout<<"O";
-			if(velocidad<38 and ganador==16){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(84, 47);
-				cout<<" ";
-			}
-			break;
-			
-		case 22:
-			gotoxy(77, 45);   // 33
-			cout<<"O";
-			if(velocidad<38 and ganador==33){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(77, 45);
-				cout<<" ";
-			}
-			break;
-			
-		case 23:
-			gotoxy(72, 43);   // 1
-			cout<<"O";
-			if(velocidad<38 and ganador==1){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(72, 43);
-				cout<<" ";
-			}
-			break;
-			
-		case 24:
-			gotoxy(67, 41);   // 20
-			cout<<"O";
-			if(velocidad<38 and ganador==20){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(67, 41);
-				cout<<" ";
-			}
-			break;
-			
-		case 25:
-			gotoxy(64, 38);   // 14
-			cout<<"O";
-			if(velocidad<38 and ganador==14){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(64, 38);
-				cout<<" ";
-			}
-			break;
-			
-		case 26:
-			gotoxy(60, 34);   // 31
-			cout<<"O";
-			if(velocidad<38 and ganador==31){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(60, 34);
-				cout<<" ";
-			}
-			break;
-			
-		case 27:
-			gotoxy(58, 31);   // 9
-			cout<<"O";
-			if(velocidad<38 and ganador==9){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(58, 31);
-				cout<<" ";
-			}
-			break;
-			
-		case 28:
-			gotoxy(58, 27);   // 22
-			cout<<"O";
-			if(velocidad<38 and ganador==22){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(58, 27);
-				cout<<" ";
-			}
-			break;
-			
-		case 29:
-			gotoxy(59, 23);   // 18
-			cout<<"O";
-			if(velocidad<38 and ganador==18){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(59, 23);
-				cout<<" ";
-			}
-			break;
-			
-		case 30:
-			gotoxy(60, 20);   // 29
-			cout<<"O";
-			if(velocidad<38 and ganador==29){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(60, 20);
-				cout<<" ";
-			}
-			break;
-			
-		case 31:
-			gotoxy(65, 16);   // 7
-			cout<<"O";
-			if(velocidad<38 and ganador==7){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(65, 16);
-				cout<<" ";
-			}
-			break;
-			
-		case 32:
-			gotoxy(69, 13);   // 28
-			cout<<"O";
-			if(velocidad<38 and ganador==28){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(69, 13);
-				cout<<" ";
-			}
-			break;
-			
-		case 33:
-			gotoxy(75, 10);   // 12
-			cout<<"O";
-			if(velocidad<38 and ganador==12){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(75, 10);
-				cout<<" ";
-			}
-			break;
-			
-		case 34:
-			gotoxy(81, 8);   // 35
-			cout<<"O";
-			if(velocidad<38 and ganador==35){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(81, 8);
-				cout<<" ";
-			}
-			break;
-			
-		case 35:
-			gotoxy(88, 7);   // 3
-			cout<<"O";
-			if(velocidad<38 and ganador==3){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(88, 7);
-				cout<<" ";
-			}
-			break;
-			
-		case 36:
-			gotoxy(96, 6);   // 26
-			cout<<"O";
-			if(velocidad<38 and ganador==26){
-				condicion=false;
-			}
-			else{
-				esperar(1000/velocidad);
-				gotoxy(96, 6);
-				cout<<" ";
-			}
-			break;
+			velocidad--;
 		}
-		velocidad--;
+		
+		esperar(1000);
 	}
-	esperar(1000);
-}
