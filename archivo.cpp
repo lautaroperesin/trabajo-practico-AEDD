@@ -4,6 +4,8 @@
 #include "numero.h"
 #include <fstream>
 #include <cstring>
+#include <ctime>
+#include <string>
 	
 #include <iostream>
 #include "jugador.h"
@@ -254,18 +256,38 @@ bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 
 
 void opcionCargarArchivo(ptrNodo &listaSesiones, string &nombreArchivo) {
-	string archivoElegido;
+	bool puedeCargar = true;
 	
-	cout << "Nombre o ruta del archivo: ";
-	getline(cin >> ws, archivoElegido);
+	if (listaSesiones != NULL) {
+		cout << "Primero se guardaran las sesiones actuales."
+			<< endl;
+		
+		puedeCargar = guardarAlSalir(listaSesiones, nombreArchivo);
+		
+		if (puedeCargar) {
+			cout << "Sesiones actuales guardadas en: "
+				<< nombreArchivo << endl;
+		}
+	}
 	
-	bool cargado = cargarSesiones(listaSesiones, archivoElegido.c_str());
-	
-	if (cargado) {
-		nombreArchivo = archivoElegido;
-		Mensaje("Sesiones cargadas correctamente");
-	} else {
-		Mensaje("No se pudo cargar el archivo");
+	if (puedeCargar) {
+		string archivoElegido;
+		
+		cout << "Nombre o ruta del archivo: ";
+		getline(cin >> ws, archivoElegido);
+		
+		bool cargado = cargarSesiones(listaSesiones, archivoElegido.c_str());
+		
+		if (cargado) {
+			nombreArchivo = archivoElegido;
+			Mensaje("Sesiones cargadas correctamente");
+		}
+		else {
+			Mensaje("No se pudo cargar el archivo");
+		}
+	}
+	else {
+		Mensaje("Se cancelo la carga porque no se pudieron guardar las sesiones actuales.");
 	}
 	
 	cout << "Presiona ENTER para continuar...";
