@@ -111,3 +111,87 @@ void inicioSesion(Jugador jugadores[], int &cant, Numero ruleta[]){
 	inicializarRuleta(ruleta);
 	cargarJugadores(jugadores, cant);
 }
+
+
+int getFichas(Jugador j) {
+	return j.fichas;
+}
+
+
+int getFichasJugadas(Apuesta a) {
+	return a.fichasJugadas;
+}
+
+int getNumeroApostado(Apuesta a) {
+	return a.numeroApostado;
+}
+
+char getColorApostado(Apuesta a) {
+	return a.colorApostado;
+}
+
+int getTipoApuesta(Apuesta a) {
+	return a.tipoApuesta;
+}
+
+
+string getNombre(Jugador j) {
+	return j.nombre;
+}
+
+Apuesta getApuestaEnPosicion(Jugador j, int pos) {
+	return j.apuestas[pos];
+}
+
+int getTlApuestas(Jugador j) {
+	return j.tlApuestas;
+}
+
+int getVictorias(Jugador j) {
+	return j.victorias;
+}
+
+int getDerrotas(Jugador j) {
+	return j.derrotas;
+}
+
+
+void setFichasJugadas(Apuesta &a, int fichas) {
+	a.fichasJugadas = fichas;
+}
+
+void setNumeroApostado(Apuesta &a, int numero) {
+	a.numeroApostado = numero;
+}
+
+void setColorApostado(Apuesta &a, char color) {
+	a.colorApostado = color;
+}
+
+void setTipoApuesta(Apuesta &a, int tipo) {
+	a.tipoApuesta = tipo;
+}
+
+void setNombre(Jugador &j, string nombre) {
+	j.nombre = nombre;
+}
+
+void setFichas(Jugador &j, int fichas) {
+	j.fichas = fichas;
+}
+
+void setApuestaEnPosicion(Jugador &j, Apuesta ap, int pos) {
+	j.apuestas[pos] = ap;
+}
+
+void setTlApuestas(Jugador &j, int tl) {
+	j.tlApuestas = tl;
+}
+
+void setVictorias(Jugador &j, int victorias) {
+	j.victorias = victorias;
+}
+
+void setDerrotas(Jugador &j, int derrotas) {
+	j.derrotas = derrotas;
+}

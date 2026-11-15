@@ -1,11 +1,14 @@
 #include <stdlib.h>
 #include <windows.h>
+#include <string>
 
 #include <iostream>
+#include "archivo.h"
 #include "numero.h"
 #include "ruleta.h"
 #include "jugador.h"
 #include "presentacion.h"
+#include "sesion.h"
 
 using namespace std;
 
@@ -29,6 +32,8 @@ int main() {
 	bool condicion=false;
 	Numero registroNumeros[1200];
 	int giros = 0;
+	ptrNodo listaSesiones = NULL;
+	string nombreArchivo;
 	do{
 		Selector(condicion);
 		cin>>eleccion;
@@ -38,9 +43,14 @@ int main() {
 		case '1':
 			if(!condicion){
 				inicioSesion(jugadores,cant, ruleta);
+				
 				condicion=true;
+				
 				limpiarPantalla();
+				
 				ejecutarCicloPartidas(ruleta, jugadores, cant, registroNumeros, giros);
+				
+				registrarSesionTerminada(listaSesiones, jugadores, cant, registroNumeros, giros);
 			}
 			else{
 				Mensaje("Ya se ha iniciado sesion");
@@ -77,15 +87,24 @@ int main() {
 			}
 			break;
 		case '5':
+			mostrarSesiones(listaSesiones);
+			
+			cout << "Presiona ENTER para continuar...";
+			cin.ignore();
+			cin.get();
+			break;
+			
 		case '6':
-		case '7':
 			Mensaje("Funcionalidad en Desarrollo");
+			break;
+		case '7':
+			opcionCargarArchivo(listaSesiones, nombreArchivo);
 			break;
 		case 'X':
 		case 'x':
-			cout<<centrar("¿Estas seguro de que quieres salir?",ANCHO_VENTANA)<<endl;
-			cout<<centrar("Escribe para confirmar:",ANCHO_VENTANA);
-			cin>>eleccion;
+			if (!opcionSalir(listaSesiones, nombreArchivo)) {
+				eleccion = '0';
+			}
 			break;
 		default:
 			Mensaje("Funcion desconocida");
@@ -95,6 +114,7 @@ int main() {
 		
 	}while(eleccion!='x' and eleccion!='X') ;
 	
+	liberarLista(listaSesiones);
 	Despedida();
 	
 	return 0;
