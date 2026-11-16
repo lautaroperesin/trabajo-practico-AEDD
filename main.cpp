@@ -116,9 +116,6 @@ int main() {
 						tiposDeApuestas(listaSesiones);
 						break;
 					case '4':
-						efectividadDeApuestas(listaSesiones);
-						break;
-					case '5':
 						efectividadDeJugadores(listaSesiones);
 						break;
 					

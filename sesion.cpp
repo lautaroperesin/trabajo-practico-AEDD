@@ -2,6 +2,7 @@
 #include "presentacion.h"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 using namespace std;
 
 /**
@@ -188,11 +189,11 @@ void mostrarJugadorMasVictorias(ptrNodo lista) {
 		cout << "No hay sesiones cargadas en memoria." << endl;
 		return;
 	}
+	cout <<centrar ("==JUGADOR CON MAS VICTORIAS POR SESION==",150)<<endl;
+	cout<< centrar("Sesion",50)<<centrar("Jugador",50)<<centrar("Victorias",50)<<endl;
 	
-	cout << "==JUGADOR CON MAS VICTORIAS POR SESION==" << endl;
-	cout << left << setw(15) << "Sesion" << setw(20) << "Jugador"
-		<< "Victorias" << endl;
-	cout << "----------------------------------------------" << endl;
+	borde(8);
+
 	
 	ptrNodo actual = lista;
 	while (actual != NULL) {
@@ -212,17 +213,17 @@ void mostrarJugadorMasVictorias(ptrNodo lista) {
 					posicionMejor = i;
 				}
 			}
+			cout<< centrar(("Sesion #" + to_string(sesion.idSesion)),50)
+				<<centrar(sesion.jugadores[posicionMejor].nombre,50)
+				<<centrar(to_string(sesion.jugadores[posicionMejor].victorias),50)
+				<<endl;
 			
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< setw(20) << sesion.jugadores[posicionMejor].nombre
-				<< sesion.jugadores[posicionMejor].victorias << endl;
 		}
 		
 		actual = actual->sig;
 	}
 	
-	cout << "----------------------------------------------" << endl;
+	borde(8);
 }
 
 /**
@@ -250,10 +251,10 @@ void mostrarJugadorMasApostador(ptrNodo lista) {
 		return;
 	}
 	
-	cout << "==JUGADOR CON MAS APOSTADOR POR SESION==" << endl;
-	cout << left << setw(15) << "Sesion" << setw(20) << "Jugador"
-		<< "Apuestas" << endl;
-	cout << "----------------------------------------------" << endl;
+	cout <<centrar ("==JUGADOR CON MAS APOSTADOR POR SESION==",150)<<endl;
+	cout<< centrar("Sesion",50)<<centrar("Jugador",50)<<centrar("Apuestas",50)<<endl;
+	
+	borde(8);
 	
 	ptrNodo actual = lista;
 	while (actual != NULL) {
@@ -279,16 +280,14 @@ void mostrarJugadorMasApostador(ptrNodo lista) {
 				}
 			}
 			
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< setw(20) << sesion.jugadores[pos].nombre
-				<< Mayor << endl;
+			cout<< centrar(("Sesion #" + to_string(sesion.idSesion)),50)<<centrar(sesion.jugadores[pos].nombre,50)<<centrar(to_string(Mayor),50)<<endl;
+			
 		}
 		
 		actual = actual->sig;
 	}
 	
-	cout << "----------------------------------------------" << endl;
+	borde(8);
 }
 /**
 * ****************************************************************************************
@@ -312,10 +311,9 @@ void tiposDeApuestas(ptrNodo lista) {
 		cout << "No hay sesiones cargadas en memoria." << endl;
 		return;
 	}
-	
-	cout << "==TIPOS DE JUGADA POR SESION==" << endl;
-	cout << left << setw(15) << "Sesion" << setw(20) << " Numero " << " Color " <<" Paridad ";
-	cout << "----------------------------------------------" << endl;
+	cout <<centrar ("==TIPOS DE JUGADA POR SESION==",150)<<endl;
+	cout<< centrar("Sesion",37)<<centrar("Numero",38)<<centrar("Color",37)<<centrar("Paridad",38)<<endl;
+	borde(8);
 	
 	ptrNodo actual = lista;
 	while (actual != NULL) {
@@ -343,9 +341,11 @@ void tiposDeApuestas(ptrNodo lista) {
 				}
 			}
 			
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< setw(20) << contadorNumero << contadorColor << contadorParidad<< endl;
+			cout<< centrar(("Sesion #" + to_string(sesion.idSesion)),37)
+				<<centrar(to_string(contadorNumero),38)
+				<<centrar(to_string(contadorColor),37)
+				<<centrar(to_string(contadorParidad),38)<<endl;
+			borde(8);
 		}
 		
 		actual = actual->sig;
@@ -353,108 +353,7 @@ void tiposDeApuestas(ptrNodo lista) {
 	
 	cout << "----------------------------------------------" << endl;
 }
-/**
-* ****************************************************************************************
-* Función: efectividadDeApuestas
-*
-* Parámetros:
-* - ptrNodo lista : Cabeza de la lista enlazada de sesiones.
-*
-* Retorna:
-* - void : No retorna ningún valor.
-*
-* Descripción:
-* Recorre la lista enlazada, obtiene el tipo de apuesta de cada ronda de cada 
-* jugador en una ronda y su valor y lo compara con el numero que salio en esa 
-* misma ronda, si es correcto, se suma en victorias de ese tipo, en caso 
-* contrario, en derrotas. Una vez contado, se toma el porcentaje de efectividad
-* y se sigue con el siguiente elemento de la lista hasta que se llegue a NULL.
-* ****************************************************************************************
-*/
-void efectividadDeApuestas(ptrNodo lista){
-	if (lista == NULL) {
-		cout << "No hay sesiones cargadas en memoria." << endl;
-		return;
-	}
-	
-	cout << "==EFECTIVIDAD DE APUESTAS==" << endl;
-	cout << left << setw(15) << "Sesion" << setw(20) << "Cantidad de jugadores" << "Efectividad (%)";
-	cout << "----------------------------------------------" << endl;
-	
-	ptrNodo actual = lista;
-	while (actual != NULL) {
-		Sesion &sesion = actual->info;
-		
-		if (sesion.jugadoresSesion <= 0) {
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< "Sin jugadores registrados" << endl;
-		}
-		else {
-			int derrotasNumero=0;
-			int victoriasNumero=0;
-			int derrotasColor=0;
-			int victoriasColor=0;
-			int derrotasParidad=0;
-			int victoriasParidad=0;
-			
-			for(int i=0;i<sesion.totalGiros;i++) { 
-				Numero n=sesion.historial[i];
-				for (int j = 0; j < sesion.jugadoresSesion; j++) {
-					int tipo=getTipoApuesta(getApuestaEnPosicion(sesion.jugadores[j],i));
-					if(tipo==1){
-						if(getNumeroApostado(getApuestaEnPosicion(sesion.jugadores[j],i))==obtenerValor(n)){
-							victoriasNumero++;
-						}
-						else{
-							derrotasNumero++;
-						}
-					}
-					else if(tipo==2){
-						if(getColorApostado(getApuestaEnPosicion(sesion.jugadores[j],i))==obtenerColor(n)){
-							victoriasColor++;
-						}
-						else{
-							derrotasColor++;
-						}
-					}
-					else if(tipo==3){
-						if(obtenerParidad(n)==1){
-							victoriasParidad++;
-						}
-						else{
-							derrotasParidad++;
-						}
-					}
-					else{
-						if(obtenerParidad(n)==2){
-							victoriasParidad++;
-						}
-						else{
-							derrotasParidad++;
-						}
-					}
-				}
-			}
-			
-			float efectividadNumero=victoriasNumero;
-			float efectividadColor=victoriasColor;
-			float efectividadParidad=victoriasParidad;
-			
-			efectividadNumero=(efectividadNumero*100)/(derrotasNumero+efectividadNumero);
-			efectividadColor=(efectividadColor*100)/(derrotasColor+efectividadColor);
-			efectividadParidad=(efectividadParidad*100)/(derrotasParidad+efectividadParidad);
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< setw(20) << sesion.jugadoresSesion << efectividadNumero <<efectividadColor<<efectividadParidad<< endl;
-		}
-		
-		actual = actual->sig;
-	}
-	
-	cout << "----------------------------------------------" << endl;
-}
-	
+
 /**
 * ****************************************************************************************
 * Función: efectividadDeJugadores
@@ -472,16 +371,16 @@ void efectividadDeApuestas(ptrNodo lista){
 * llega a NULL.
 * ****************************************************************************************
 */	
-	
-void efectividadDeJugadores(ptrNodo lista) {
+
+
+void efectividadDeJugadores(ptrNodo lista){
 	if (lista == NULL) {
 		cout << "No hay sesiones cargadas en memoria." << endl;
 		return;
 	}
-	
-	cout << "==EFECTIVIDAD DE LOS JUGADORES==" << endl;
-	cout << left << setw(15) << "Sesion" << setw(20) << " Cantidad de jugadores " << " Efectividad ";
-	cout << "----------------------------------------------" << endl;
+	cout <<centrar ("==EFECTIVIDAD DE LOS JUGADORES==",150)<<endl;
+	cout<< centrar("Sesion",50)<<centrar("Cantidad de jugadores",50)<<centrar("Efectividad",50)<<endl;
+	borde(8);
 	
 	ptrNodo actual = lista;
 	while (actual != NULL) {
@@ -502,18 +401,19 @@ void efectividadDeJugadores(ptrNodo lista) {
 			}
 			float efectividad=acumuladorVictorias;
 			efectividad=(efectividad*100)/(acumuladorDerrotas+acumuladorVictorias);
-			cout << left << setw(15)
-				<< ("Sesion #" + to_string(sesion.idSesion))
-				<< setw(20) << sesion.jugadoresSesion << efectividad <<"%" << endl;
+			stringstream ss;
+			ss << fixed << setprecision(2)<<efectividad;
+			
+			string texto = ss.str();
+			cout<< centrar(("Sesion #" + to_string(sesion.idSesion)),50)<<centrar(to_string(sesion.jugadoresSesion),50)<<centrar(texto+"%",50)<<endl;
+			
 		}
 		
 		actual = actual->sig;
 	}
 	
-	cout << "----------------------------------------------" << endl;
+	borde(8);
 }
-
-
 
 /****************************************************
 * Funcion: registrarSesionTerminada

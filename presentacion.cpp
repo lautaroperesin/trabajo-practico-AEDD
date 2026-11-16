@@ -1233,12 +1233,11 @@ void submenu(){
 	linea("1.- Jugador con más victorias por sesión",BLANCO,AZUL_CLARO);
 	linea("2.- Jugador que más fichas apostó por sesión",BLANCO,AZUL_CLARO);
 	linea("3.- Desglose de tipos de apuestas por sesión",BLANCO,AZUL_CLARO);
-	linea("4.- Estadísticas de aciertos por tipo de apuesta",BLANCO,AZUL_CLARO);
-	linea("5.- Rendimiento general de los jugadores",BLANCO,AZUL_CLARO);
+	linea("4.- Rendimiento general de los jugadores",BLANCO,AZUL_CLARO);
 	linea("X.- Volver al Menú Principal",BLANCO,AZUL_CLARO);
 	linea("",BLANCO,AZUL_CLARO);
 	linea("Ingrese una opcion:",BLANCO_BRILL,AZUL_CLARO);
 	linea("",BLANCO,AZUL_CLARO);
 	borde(AZUL_CLARO);
-	gotoxy(ANCHO/2+10,11);
+	gotoxy(ANCHO/2+10,10);
 }
