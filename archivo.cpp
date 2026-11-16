@@ -246,8 +246,16 @@ bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 		archivo.close();
 	}
 	if (exito) {
-		liberarLista(lista);
-		lista = temporal;
+		if(lista == NULL){
+			lista = temporal;
+		} else {
+			ptrNodo actual = lista;
+			
+			while (actual ->sig != NULL){
+				actual = actual->sig;
+			}
+			actual->sig = temporal;
+		}
 	} else {
 		liberarLista(temporal);
 	}
@@ -256,42 +264,21 @@ bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 
 
 void opcionCargarArchivo(ptrNodo &listaSesiones, string &nombreArchivo) {
-	bool puedeCargar = true;
+	string archivoElegido;
 	
-	if (listaSesiones != NULL) {
-		cout << "Primero se guardaran las sesiones actuales."
-			<< endl;
-		
-		puedeCargar = guardarAlSalir(listaSesiones, nombreArchivo);
-		
-		if (puedeCargar) {
-			cout << "Sesiones actuales guardadas en: "
-				<< nombreArchivo << endl;
-		}
-	}
+	cout << "Nombre o ruta del archivo: ";
+	getline(cin >> ws, archivoElegido);
 	
-	if (puedeCargar) {
-		string archivoElegido;
+	bool cargado = cargarSesiones(listaSesiones, archivoElegido.c_str());
+	
+	if (cargado) {
+		nombreArchivo = archivoElegido;
 		
-		cout << "Nombre o ruta del archivo: ";
-		getline(cin >> ws, archivoElegido);
-		
-		bool cargado = cargarSesiones(listaSesiones, archivoElegido.c_str());
-		
-		if (cargado) {
-			nombreArchivo = archivoElegido;
-			Mensaje("Sesiones cargadas correctamente");
-		}
-		else {
-			Mensaje("No se pudo cargar el archivo");
-		}
+		Mensaje("Carga completada. Las sesiones del archivo se agregaron a la lista.");
 	}
 	else {
-		Mensaje("Se cancelo la carga porque no se pudieron guardar las sesiones actuales.");
+		Mensaje("No se pudo cargar el archivo. Se conservaron las sesiones actuales.");
 	}
-	
-	cout << "Presiona ENTER para continuar...";
-	cin.get();
 }
 
 bool guardarAlSalir(ptrNodo lista, string &nombreArchivo) {

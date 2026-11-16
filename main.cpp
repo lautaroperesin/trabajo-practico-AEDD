@@ -35,7 +35,7 @@ int main() {
 	ptrNodo listaSesiones = NULL;
 	string nombreArchivo;
 	do{
-		Selector(condicion);
+		Selector(condicion, listaSesiones != NULL);
 		cin>>eleccion;
 		limpiarPantalla();
 		
@@ -87,16 +87,19 @@ int main() {
 			}
 			break;
 		case '5':
-			if(condicion){
+			if(listaSesiones != NULL){
 				mostrarSesiones(listaSesiones);
+				
 				cout << "Presiona ENTER para continuar...";
 				cin.ignore();
 				cin.get();
+			} else {
+				Mensaje("No hay sesiones cargadas. Juga una sesion o carga un archivo.");
 			}
 			break;
 			
 		case '6':
-			if(condicion){
+			if(listaSesiones != NULL){
 				char condicionSubmenu;
 				do{
 					submenu();
@@ -126,12 +129,14 @@ int main() {
 						Mensaje("Funcion desconocida");
 					};
 					
-					cout << "Presiona ENTER para continuar...";
-					cin.ignore();
-					cin.get();
+					if(condicionSubmenu!='x' and condicionSubmenu!='X'){
+						cout << "Presiona ENTER para continuar...";
+						cin.ignore();
+						cin.get();
+					}
 				} while(condicionSubmenu!='x' and condicionSubmenu!='X');
-				
-				
+			} else {
+				Mensaje("No hay sesiones cargadas. Juga una sesion o carga un archivo");
 			}
 			break;
 		case '7':

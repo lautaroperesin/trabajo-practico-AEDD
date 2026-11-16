@@ -387,30 +387,35 @@ void Presentacion(){
 * cumple o no muestra el texto de un color u otro.
 * ****************************************************************************************
 */
-void Selector(bool condicion){
+void Selector(bool condicion, bool haySesiones){
 	borde(GRIS);
 	linea("",BLANCO,GRIS);
 	linea("RULETESCA",BLANCO,GRIS);
 	linea("",BLANCO,GRIS);
 	borde(GRIS);
-	if(!condicion){
-		linea("1.- Iniciar nueva sesion de ruleta",CIAN_CLARO,GRIS);
-		linea("2.- Consultar estado de jugadores",GRIS,GRIS);
-		linea("3.- Mostrar historial de giros",GRIS,GRIS);
-		linea("4.- Mostrar estadisticas de la sesion",GRIS,GRIS);
-		linea("5.- Ordenar sesiones segun cantidad de giros",GRIS,GRIS);
-		linea("6.- Analizar sesiones historicas",GRIS,GRIS);
-		linea("7.- Carga de Archivo",GRIS,GRIS);
+	if (!condicion) {
+		linea("1.- Iniciar nueva sesion de ruleta", CIAN_CLARO, GRIS);
+		linea("2.- Consultar estado de jugadores", GRIS, GRIS);
+		linea("3.- Mostrar historial de giros", GRIS, GRIS);
+		linea("4.- Mostrar estadisticas de la sesion", GRIS, GRIS);
 	}
-	else{
-		linea("1.- Iniciar nueva sesion de ruleta",GRIS,GRIS);
-		linea("2.- Consultar estado de jugadores",CIAN_CLARO,GRIS);
-		linea("3.- Mostrar historial de giros",CIAN_CLARO,GRIS);
-		linea("4.- Mostrar estadisticas de la sesion",CIAN_CLARO,GRIS);
-		linea("5.- Ordenar sesiones segun cantidad de giros",CIAN_CLARO,GRIS);
-		linea("6.- Analizar sesiones historicas",CIAN_CLARO,GRIS);
-		linea("7.- Carga de Archivo",CIAN_CLARO,GRIS);
+	else {
+		linea("1.- Iniciar nueva sesion de ruleta", GRIS, GRIS);
+		linea("2.- Consultar estado de jugadores", CIAN_CLARO, GRIS);
+		linea("3.- Mostrar historial de giros", CIAN_CLARO, GRIS);
+		linea("4.- Mostrar estadisticas de la sesion", CIAN_CLARO, GRIS);
 	}
+	
+	if (haySesiones) {
+		linea("5.- Ordenar sesiones segun cantidad de giros", CIAN_CLARO, GRIS);
+		linea("6.- Analizar sesiones historicas", CIAN_CLARO, GRIS);
+	}
+	else {
+		linea("5.- Ordenar sesiones segun cantidad de giros", GRIS, GRIS);
+		linea("6.- Analizar sesiones historicas", GRIS, GRIS);
+	}
+	
+	linea("7.- Carga de Archivo", CIAN_CLARO, GRIS);
 	linea("X.- Salir de la aplicacion",ROJO,GRIS);
 	linea("",BLANCO,GRIS);
 	linea("Ingrese una opcion:",BLANCO_BRILL,GRIS);
