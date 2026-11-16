@@ -54,7 +54,7 @@ const int ANCHO = 148;
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Cambia el color de fuente a partir de la funcion, hasta que se vuelva a utilizar
+* Accede a la consola y cambia el atributo del color del texto
 * ****************************************************************************************
 */
 void color(int textoColor) {
@@ -72,8 +72,7 @@ void color(int textoColor) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Cambia el color de fuente y el fondo a partir de la funcion, 
-* hasta que se vuelva a utilizar
+* Accede a la consola y cambia los atributos de color del texto y del fondo
 * ****************************************************************************************
 */
 void colorFondo(int textoColor, int fondoColor) {
@@ -90,7 +89,8 @@ void colorFondo(int textoColor, int fondoColor) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Reestablece el color del texto y del fondo al predeterminado.
+* Accede a la consola y cambia los atributos de color del texto y del fondo al
+* predeterminado
 * ****************************************************************************************
 */
 void colorNormal() {
@@ -107,7 +107,8 @@ void colorNormal() {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Ajusta el tamanio de la ventana para una mejor presentacion.
+* Accede a la consola, reduce el tamanio de la misma y luego lo ajusta al 
+* tamanio de la pantalla.
 * ****************************************************************************************
 */
 void tamanioVentana(int columnas, int filas) {
@@ -158,7 +159,7 @@ void tamanioPixeles(int ancho, int alto) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Maximiza la ventana de la consola
+* Accede a la consola y maximiza el tamanio de la ventana
 * ****************************************************************************************
 */
 void maximizar() {
@@ -174,7 +175,7 @@ void maximizar() {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Simula la combinacion ALT + ENTER.
+* Hace un seguimiento de eventos para poder poner modo pantalla completa
 * ****************************************************************************************
 */
 void pantallaCompleta() {
@@ -194,7 +195,7 @@ void pantallaCompleta() {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Oculta el cursor parpadeante.
+* Accede a la consola y desactiva la visibilidad del cursor.
 * ****************************************************************************************
 */
 void ocultarCursor() {
@@ -214,7 +215,7 @@ void ocultarCursor() {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Vuelve a mostrar el cursor.
+* Accede a la consola y vuelve a activar la visibilidad del cursor.
 * ****************************************************************************************
 */
 void mostrarCursor() {
@@ -234,7 +235,7 @@ void mostrarCursor() {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Espera la cantidad de milisegundos ingresada.
+* Espera la cantidad de tiempo en milisegundos ingresada.
 * ****************************************************************************************
 */
 void esperar(int milisegundos) {
@@ -265,7 +266,9 @@ void limpiarPantalla() {
 * Retorna:
 * - string : Retorna el texto centrado.
 * Descripcion:
-* Se utiliza para centrar el texto en pantalla, para una mejor presentacion.
+* Calcula el tamanio del texto, utiliza el ancho para saber el espacio que debe 
+* rellenar, si es mayor el tamaño del texto lo devuelve tal como esta. En caso 
+* contrario, rellena a ambos lados con espacios en blanco.
 * ****************************************************************************************
 */
 string centrar(string texto, int ancho) {
@@ -286,7 +289,7 @@ string centrar(string texto, int ancho) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Mueve el cursor a la columna x, fila y.
+* Accede a la consola para modificar la posicion del cursor.
 * ****************************************************************************************
 */
 void gotoxy(int x, int y) {
@@ -307,7 +310,7 @@ void gotoxy(int x, int y) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime una linea del marco, los bordes en un color y el texto en otro.
+* Imprime una linea del marco, el texto centrado y otra linea de marco.
 * ****************************************************************************************
 */
 void linea(string texto, int colorTexto, int colorMarco) {
@@ -328,7 +331,7 @@ void linea(string texto, int colorTexto, int colorMarco) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime los bordes horizontales.
+* Imprime los bordes horizontales del tamaño del ancho de la pantalla.
 * ****************************************************************************************
 */
 void borde(int colorMarco) {
@@ -344,7 +347,7 @@ void borde(int colorMarco) {
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime la presentacion del programa.
+* Imprime la presentacion del programa de forma secuencial.
 * ****************************************************************************************
 */
 void Presentacion(){
@@ -380,7 +383,8 @@ void Presentacion(){
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime el menu de seleccion de opciones.
+* Imprime el menu de seleccion de opciones y dependiendo de si la condicion se 
+* cumple o no muestra el texto de un color u otro.
 * ****************************************************************************************
 */
 void Selector(bool condicion){
@@ -394,16 +398,19 @@ void Selector(bool condicion){
 		linea("2.- Consultar estado de jugadores",GRIS,GRIS);
 		linea("3.- Mostrar historial de giros",GRIS,GRIS);
 		linea("4.- Mostrar estadisticas de la sesion",GRIS,GRIS);
+		linea("5.- Ordenar sesiones segun cantidad de giros",GRIS,GRIS);
+		linea("6.- Analizar sesiones historicas",GRIS,GRIS);
+		linea("7.- Carga de Archivo",GRIS,GRIS);
 	}
 	else{
 		linea("1.- Iniciar nueva sesion de ruleta",GRIS,GRIS);
 		linea("2.- Consultar estado de jugadores",CIAN_CLARO,GRIS);
 		linea("3.- Mostrar historial de giros",CIAN_CLARO,GRIS);
 		linea("4.- Mostrar estadisticas de la sesion",CIAN_CLARO,GRIS);
+		linea("5.- Ordenar sesiones segun cantidad de giros",CIAN_CLARO,GRIS);
+		linea("6.- Analizar sesiones historicas",CIAN_CLARO,GRIS);
+		linea("7.- Carga de Archivo",CIAN_CLARO,GRIS);
 	}
-	linea("5.- Ordenar sesiones segun cantidad de giros",GRIS,GRIS);
-	linea("6.- Analizar sesiones historicas",GRIS,GRIS);
-	linea("7.- Carga de Archivo",GRIS,GRIS);
 	linea("X.- Salir de la aplicacion",ROJO,GRIS);
 	linea("",BLANCO,GRIS);
 	linea("Ingrese una opcion:",BLANCO_BRILL,GRIS);
@@ -441,7 +448,7 @@ void Mensaje(string texto){
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime la despedida del programa.
+* Imprime la despedida del programa de forma secuencial.
 * ****************************************************************************************
 */
 	
@@ -468,7 +475,8 @@ void Despedida(){
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime la ruleta, para su uso en el programa.
+* Imprime la ruleta utilizando la funcion de centrar, luego accede a posiciones 
+* especificas para colocar cada numero en su lugar.
 * ****************************************************************************************
 */
 void generarRuleta(){
@@ -655,7 +663,13 @@ void generarRuleta(){
 * Retorna:
 * - void : No retorna ningun valor.
 * Descripcion:
-* Imprime la bola, y muestra el numero ganador.
+* Crea un numero aleatorio entre 100 y 179 para la velocidad, entra en un ciclo 
+* while y entra en switch. Dependiendo del numero aleatorio la bola iniciara en
+* un sitio u otro. Una vez en posicion, se desplaza utilizando la funcion gotoxy  
+* para escribir la bola, espera un tiempo en base a la velocidad, borra la bola
+* para escribirla en la siguiente posicion y reduce la velocidad. Esto se repite
+* hasta que la bola este en la posicion correcta con una velocidad los 
+* suficientemente baja.
 * ****************************************************************************************
 */
 	void bola(int ganador){
@@ -1193,3 +1207,33 @@ void generarRuleta(){
 		
 		esperar(1000);
 	}
+/**
+* ****************************************************************************************
+* Funcion: submenu
+*
+* Parametros:
+*  - vacio: No requiere.
+* Retorna:
+* - void : No retorna ningun valor.
+* Descripcion:
+* Imprime secuencialmente el menu de sesiones historicas.
+* ****************************************************************************************
+*/
+void submenu(){
+	limpiarPantalla();
+	borde(AZUL_CLARO);
+	linea("Analizador de sesiones historicas",CIAN_CLARO,AZUL_CLARO);
+	borde(AZUL_CLARO);
+	linea("",BLANCO,AZUL_CLARO);
+	linea("1.- Jugador con más victorias por sesión",BLANCO,AZUL_CLARO);
+	linea("2.- Jugador que más fichas apostó por sesión",BLANCO,AZUL_CLARO);
+	linea("3.- Desglose de tipos de apuestas por sesión",BLANCO,AZUL_CLARO);
+	linea("4.- Estadísticas de aciertos por tipo de apuesta",BLANCO,AZUL_CLARO);
+	linea("5.- Rendimiento general de los jugadores",BLANCO,AZUL_CLARO);
+	linea("X.- Volver al Menú Principal",BLANCO,AZUL_CLARO);
+	linea("",BLANCO,AZUL_CLARO);
+	linea("Ingrese una opcion:",BLANCO_BRILL,AZUL_CLARO);
+	linea("",BLANCO,AZUL_CLARO);
+	borde(AZUL_CLARO);
+	gotoxy(ANCHO/2+10,11);
+}

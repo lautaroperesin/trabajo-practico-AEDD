@@ -28,4 +28,5 @@ void Mensaje(string texto);
 void Despedida();
 void generarRuleta();
 void bola(int ganador);
+void submenu();
 #endif

@@ -1,4 +1,5 @@
 #include "sesion.h"
+#include "presentacion.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -223,6 +224,295 @@ void mostrarJugadorMasVictorias(ptrNodo lista) {
 	
 	cout << "----------------------------------------------" << endl;
 }
+
+/**
+* ****************************************************************************************
+* Función: mostrarJugadorMasApostador
+*
+* Parámetros:
+* - ptrNodo lista : Cabeza de la lista enlazada de sesiones.
+*
+* Retorna:
+* - void : No retorna ningún valor.
+*
+* Descripción:
+* Recorre la lista enlazada, comparando en cada sesion cual es el jugador que
+* mas fichas arriesgo. La comparación se hace con la sumatorio de fichas que 
+* arriesgo cada usuario, se guarda la posicion del mismo y se muestra su 
+* informción. Posteriormente, se sigue a la siguiente nodo de la lista enlazada
+* para analizar la siguiente sesion, hasta que se termine la lista. (Que apunte
+* a NULL)
+* ****************************************************************************************
+*/
+void mostrarJugadorMasApostador(ptrNodo lista) {
+	if (lista == NULL) {
+		cout << "No hay sesiones cargadas en memoria." << endl;
+		return;
+	}
+	
+	cout << "==JUGADOR CON MAS APOSTADOR POR SESION==" << endl;
+	cout << left << setw(15) << "Sesion" << setw(20) << "Jugador"
+		<< "Apuestas" << endl;
+	cout << "----------------------------------------------" << endl;
+	
+	ptrNodo actual = lista;
+	while (actual != NULL) {
+		Sesion &sesion = actual->info;
+		
+		if (sesion.jugadoresSesion <= 0) {
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< "Sin jugadores registrados" << endl;
+		}
+		else {
+			int Mayor = 0;
+			int pos =0;
+			for (int i = 0; i < sesion.jugadoresSesion; i++) {
+				int sumatoria=0;
+				int TL=getTlApuestas(sesion.jugadores[i]);
+				for(int j=0;j<TL;j++) { 
+					sumatoria+=getFichasJugadas(getApuestaEnPosicion(sesion.jugadores[i],j));
+				}
+				if(Mayor<sumatoria){
+					Mayor=sumatoria;
+					pos=i;
+				}
+			}
+			
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< setw(20) << sesion.jugadores[pos].nombre
+				<< Mayor << endl;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	cout << "----------------------------------------------" << endl;
+}
+/**
+* ****************************************************************************************
+* Función: tiposDeApuestas
+*
+* Parámetros:
+* - ptrNodo lista : Cabeza de la lista enlazada de sesiones.
+*
+* Retorna:
+* - void : No retorna ningún valor.
+*
+* Descripción:
+* Recorre la lista enlazada, cuenta los tipos de apuesta que se realizaron en 
+* cada sesion y los muestra por pantalla. Posteriormente, se sigue a la 
+* siguiente nodo de la lista enlazada para analizar la siguiente sesion, hasta 
+* que se termine la lista. (Que apuntea NULL)
+* ****************************************************************************************
+*/
+void tiposDeApuestas(ptrNodo lista) {
+	if (lista == NULL) {
+		cout << "No hay sesiones cargadas en memoria." << endl;
+		return;
+	}
+	
+	cout << "==TIPOS DE JUGADA POR SESION==" << endl;
+	cout << left << setw(15) << "Sesion" << setw(20) << " Numero " << " Color " <<" Paridad ";
+	cout << "----------------------------------------------" << endl;
+	
+	ptrNodo actual = lista;
+	while (actual != NULL) {
+		Sesion &sesion = actual->info;
+		
+		if (sesion.jugadoresSesion <= 0) {
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< "Sin jugadores registrados" << endl;
+		}
+		else {
+			int contadorColor=0;
+			int contadorParidad=0;
+			int contadorNumero=0;
+			for (int i = 0; i < sesion.jugadoresSesion; i++) {
+				int TL=getTlApuestas(sesion.jugadores[i]);
+				for(int j=0;j<TL;j++) { 
+					int tipo=getTipoApuesta(getApuestaEnPosicion(sesion.jugadores[i],j));
+					if(tipo==1)
+						contadorNumero++;
+					else if(tipo==2)
+						contadorColor++;
+					else
+						contadorParidad++;
+				}
+			}
+			
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< setw(20) << contadorNumero << contadorColor << contadorParidad<< endl;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	cout << "----------------------------------------------" << endl;
+}
+/**
+* ****************************************************************************************
+* Función: efectividadDeApuestas
+*
+* Parámetros:
+* - ptrNodo lista : Cabeza de la lista enlazada de sesiones.
+*
+* Retorna:
+* - void : No retorna ningún valor.
+*
+* Descripción:
+* Recorre la lista enlazada, obtiene el tipo de apuesta de cada ronda de cada 
+* jugador en una ronda y su valor y lo compara con el numero que salio en esa 
+* misma ronda, si es correcto, se suma en victorias de ese tipo, en caso 
+* contrario, en derrotas. Una vez contado, se toma el porcentaje de efectividad
+* y se sigue con el siguiente elemento de la lista hasta que se llegue a NULL.
+* ****************************************************************************************
+*/
+void efectividadDeApuestas(ptrNodo lista){
+	if (lista == NULL) {
+		cout << "No hay sesiones cargadas en memoria." << endl;
+		return;
+	}
+	
+	cout << "==EFECTIVIDAD DE APUESTAS==" << endl;
+	cout << left << setw(15) << "Sesion" << setw(20) << "Cantidad de jugadores" << "Efectividad (%)";
+	cout << "----------------------------------------------" << endl;
+	
+	ptrNodo actual = lista;
+	while (actual != NULL) {
+		Sesion &sesion = actual->info;
+		
+		if (sesion.jugadoresSesion <= 0) {
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< "Sin jugadores registrados" << endl;
+		}
+		else {
+			int derrotasNumero=0;
+			int victoriasNumero=0;
+			int derrotasColor=0;
+			int victoriasColor=0;
+			int derrotasParidad=0;
+			int victoriasParidad=0;
+			
+			for(int i=0;i<sesion.totalGiros;i++) { 
+				Numero n=sesion.historial[i];
+				for (int j = 0; j < sesion.jugadoresSesion; j++) {
+					int tipo=getTipoApuesta(getApuestaEnPosicion(sesion.jugadores[j],i));
+					if(tipo==1){
+						if(getNumeroApostado(getApuestaEnPosicion(sesion.jugadores[j],i))==obtenerValor(n)){
+							victoriasNumero++;
+						}
+						else{
+							derrotasNumero++;
+						}
+					}
+					else if(tipo==2){
+						if(getColorApostado(getApuestaEnPosicion(sesion.jugadores[j],i))==obtenerColor(n)){
+							victoriasColor++;
+						}
+						else{
+							derrotasColor++;
+						}
+					}
+					else if(tipo==3){
+						if(obtenerParidad(n)==1){
+							victoriasParidad++;
+						}
+						else{
+							derrotasParidad++;
+						}
+					}
+					else{
+						if(obtenerParidad(n)==2){
+							victoriasParidad++;
+						}
+						else{
+							derrotasParidad++;
+						}
+					}
+				}
+			}
+			
+			float efectividadNumero=victoriasNumero;
+			float efectividadColor=victoriasColor;
+			float efectividadParidad=victoriasParidad;
+			
+			efectividadNumero=(efectividadNumero*100)/(derrotasNumero+efectividadNumero);
+			efectividadColor=(efectividadColor*100)/(derrotasColor+efectividadColor);
+			efectividadParidad=(efectividadParidad*100)/(derrotasParidad+efectividadParidad);
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< setw(20) << sesion.jugadoresSesion << efectividadNumero <<efectividadColor<<efectividadParidad<< endl;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	cout << "----------------------------------------------" << endl;
+
+/**
+* ****************************************************************************************
+* Función: efectividadDeJugadores
+*
+* Parámetros:
+* - ptrNodo lista : Cabeza de la lista enlazada de sesiones.
+*
+* Retorna:
+* - void : No retorna ningún valor.
+*
+* Descripción:
+* Recorre la lista enlazada, suma la cantidad de victorias y derrotas de cada 
+* jugador y en base a esto se hace el calculo de la efectividad promedio de los
+* jugadores en esa sesion y se muestra por pantalla. Esto se repite hasta que se
+* llega a NULL.
+* ****************************************************************************************
+*/	
+	
+void efectividadDeJugadores(ptrNodo lista) {
+	if (lista == NULL) {
+		cout << "No hay sesiones cargadas en memoria." << endl;
+		return;
+	}
+	
+	cout << "==EFECTIVIDAD DE LOS JUGADORES==" << endl;
+	cout << left << setw(15) << "Sesion" << setw(20) << " Cantidad de jugadores " << " Efectividad ";
+	cout << "----------------------------------------------" << endl;
+	
+	ptrNodo actual = lista;
+	while (actual != NULL) {
+		Sesion &sesion = actual->info;
+		
+		if (sesion.jugadoresSesion <= 0) {
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< "Sin jugadores registrados" << endl;
+		}
+		else {
+			int acumuladorDerrotas=0;
+			int acumuladorVictorias=0;
+			for (int i = 0; i < sesion.jugadoresSesion; i++) {
+				acumuladorDerrotas+=getDerrotas(sesion.jugadores[i]);
+				acumuladorVictorias+=getVictorias(sesion.jugadores[i]);
+				
+			}
+			float efectividad=acumuladorVictorias;
+			efectividad=(efectividad*100)/(acumuladorDerrotas+acumuladorVictorias);
+			cout << left << setw(15)
+				<< ("Sesion #" + to_string(sesion.idSesion))
+				<< setw(20) << sesion.jugadoresSesion << efectividad <<"%" << endl;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	cout << "----------------------------------------------" << endl;
+}
+
+
 
 /****************************************************
 * Funcion: registrarSesionTerminada

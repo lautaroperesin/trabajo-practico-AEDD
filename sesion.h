@@ -23,7 +23,10 @@ int contarSesiones(ptrNodo lista);
 void ordenarSesiones(ptrNodo &lista);
 void mostrarSesiones(ptrNodo &lista);
 void mostrarJugadorMasVictorias(ptrNodo lista);
-
+void mostrarJugadorMasApostador(ptrNodo lista);
+void tiposDeApuestas(ptrNodo lista);
+void efectividadDeApuestas(ptrNodo lista);
+void efectividadDeJugadores(ptrNodo lista);
 void registrarSesionTerminada(ptrNodo &lista, Jugador jugadores[], int cant,
 							  Numero historial[], int giros);
 

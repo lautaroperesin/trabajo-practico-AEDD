@@ -123,7 +123,8 @@ void guardarGiro(Numero numeros[], Numero nuevo, int pos){
 * - void : No retorna ningun valor.
 *
 * Descripción:
-* Muestra en pantalla la secuencia numeros ganadores en orden.
+* Recibe el vector de numeros y los muestra la informaci�n del mismo utlizando 
+* columnas, con la funcion centrar.
 * ****************************************************************************************
 */
 void mostrarHistorial(Numero numeros[],int totalGiros){
@@ -186,7 +187,10 @@ void mostrarHistorial(Numero numeros[],int totalGiros){
 * - void : No retorna ningun valor.
 *
 * Descripción:
-* Muestra en pantalla las estadisticas generales del juego.
+* El algoritmo obtiene el vector de numeros y de forma repetitiva cuenta cada 
+* el tipo al que pertenece cada datos. Posteriormente los muestra por pantalla,
+* para el caso de los datos porcentuales, se los multiplica por 100 y se los
+//* divide por el total.
 * ****************************************************************************************
 */
 void mostrarEstadisticas(Numero numeros[],int totalGiros){

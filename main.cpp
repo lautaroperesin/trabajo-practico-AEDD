@@ -87,15 +87,52 @@ int main() {
 			}
 			break;
 		case '5':
-			mostrarSesiones(listaSesiones);
-			
-			cout << "Presiona ENTER para continuar...";
-			cin.ignore();
-			cin.get();
+			if(condicion){
+				mostrarSesiones(listaSesiones);
+				cout << "Presiona ENTER para continuar...";
+				cin.ignore();
+				cin.get();
+			}
 			break;
 			
 		case '6':
-			Mensaje("Funcionalidad en Desarrollo");
+			if(condicion){
+				char condicionSubmenu;
+				do{
+					submenu();
+					cin>>condicionSubmenu;
+					limpiarPantalla();
+					switch(condicionSubmenu){
+					case '1':
+						mostrarJugadorMasVictorias(listaSesiones);
+						break;
+					case '2':
+						mostrarJugadorMasApostador(listaSesiones);
+						break;
+					case '3':
+						tiposDeApuestas(listaSesiones);
+						break;
+					case '4':
+						efectividadDeApuestas(listaSesiones);
+						break;
+					case '5':
+						efectividadDeJugadores(listaSesiones);
+						break;
+					
+					case 'X':
+					case 'x':
+						break;
+					default:
+						Mensaje("Funcion desconocida");
+					};
+					
+					cout << "Presiona ENTER para continuar...";
+					cin.ignore();
+					cin.get();
+				} while(condicionSubmenu!='x' and condicionSubmenu!='X');
+				
+				
+			}
 			break;
 		case '7':
 			opcionCargarArchivo(listaSesiones, nombreArchivo);
