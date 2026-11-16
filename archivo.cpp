@@ -12,6 +12,16 @@
 #include "presentacion.h"
 using namespace std;
 
+/****************************************************
+* Funcion: sesionValida
+* Parametros:
+* - Sesion s: Sesion que se quiere comprobar.
+* Retorna:
+* - bool: true si las cantidades son validas; false si no lo son.
+* Descripcion:
+* Comprueba que la cantidad de giros, jugadores y apuestas
+* de cada jugador este dentro de los limites permitidos.
+****************************************************/
 bool sesionValida(Sesion s) {
 	bool valida = true;
 	
@@ -35,6 +45,16 @@ bool sesionValida(Sesion s) {
 	return valida;
 }
 
+/****************************************************
+* Funcion: sesionArchivoValida
+* Parametros:
+* - SesionArchivo s: Registro leido del archivo.
+* Retorna:
+* - bool: true si las cantidades son validas; false si no lo son.
+* Descripcion:
+* Comprueba los limites de giros, jugadores y apuestas antes
+* de convertir el registro en una sesion del programa.
+****************************************************/
 bool sesionArchivoValida(SesionArchivo s) {
 	bool valida = true;
 	
@@ -58,6 +78,17 @@ bool sesionArchivoValida(SesionArchivo s) {
 }
 
 
+/****************************************************
+* Funcion: convertirApuestaArchivo
+* Parametros:
+* - Apuesta origen: Apuesta del programa que se quiere convertir.
+* - ApuestaArchivo &destino: Registro que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Obtiene las fichas, el numero, el color y el tipo de apuesta
+* y los copia a la estructura utilizada para el archivo.
+****************************************************/
 void convertirApuestaArchivo(Apuesta origen, ApuestaArchivo &destino) {
 	destino.fichasJugadas = getFichasJugadas(origen);
 	destino.numeroApostado = getNumeroApostado(origen);
@@ -65,6 +96,17 @@ void convertirApuestaArchivo(Apuesta origen, ApuestaArchivo &destino) {
 	destino.tipoApuesta = getTipoApuesta(origen);
 }
 
+/****************************************************
+* Funcion: convertirApuesta
+* Parametros:
+* - ApuestaArchivo origen: Apuesta recuperada del archivo.
+* - Apuesta &destino: Apuesta del programa que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Copia los datos del registro a una apuesta del programa
+* utilizando sus funciones de modificacion.
+****************************************************/
 void convertirApuesta(ApuestaArchivo origen, Apuesta &destino) {
 	setFichasJugadas(destino, origen.fichasJugadas);
 	setNumeroApostado(destino, origen.numeroApostado);
@@ -72,6 +114,19 @@ void convertirApuesta(ApuestaArchivo origen, Apuesta &destino) {
 	setTipoApuesta(destino, origen.tipoApuesta);
 }
 
+/****************************************************
+* Funcion: convertirJugadorArchivo
+* Parametros:
+* - Jugador origen: Jugador que se quiere convertir.
+* - JugadorArchivo &destino: Registro que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Copia el nombre a un arreglo de caracteres, limitando su
+* longitud y agregando el caracter de fin de texto.
+* Copia los demas datos y convierte las apuestas del jugador.
+* La cantidad de apuestas debe estar previamente validada.
+****************************************************/
 void convertirJugadorArchivo(Jugador origen, JugadorArchivo &destino) {
    JugadorArchivo aux = {};
    
@@ -92,6 +147,19 @@ void convertirJugadorArchivo(Jugador origen, JugadorArchivo &destino) {
    destino = aux;
 }
 
+/****************************************************
+* Funcion: convertirJugador
+* Parametros:
+* - JugadorArchivo origen: Jugador recuperado del archivo.
+* - Jugador &destino: Jugador del programa que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Recupera el nombre, las fichas, las victorias y las derrotas.
+* Convierte las apuestas y las coloca en sus posiciones.
+* Recibe un registro previamente validado y con el nombre
+* terminado en el caracter de fin de texto.
+****************************************************/
 void convertirJugador(JugadorArchivo origen, Jugador &destino) {
 	setNombre(destino, string(origen.nombre));
 	setFichas(destino, origen.fichas);
@@ -107,15 +175,51 @@ void convertirJugador(JugadorArchivo origen, Jugador &destino) {
 		setApuestaEnPosicion(destino, ap, i);
 	}
 }
+
+/****************************************************
+* Funcion: convertirNumeroArchivo
+* Parametros:
+* - Numero origen: Numero del historial que se quiere convertir.
+* - NumeroArchivo &destino: Registro que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Obtiene el valor y el color del numero y los copia
+* a la estructura utilizada para el archivo.
+****************************************************/
 void convertirNumeroArchivo(Numero origen, NumeroArchivo &destino) {
 	destino.valor = obtenerValor(origen);
 	destino.color = obtenerColor(origen);
 }
   
+/****************************************************
+* Funcion: convertirNumero
+* Parametros:
+* - NumeroArchivo origen: Numero recuperado del archivo.
+* - Numero &destino: Numero del programa que se inicializa.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Inicializa un numero del programa con el valor y el color
+* que se recuperaron del archivo.
+****************************************************/
 void convertirNumero(NumeroArchivo origen,Numero &destino) {
   inicializarNumero(destino, origen.valor,origen.color);
 }
 
+/****************************************************
+* Funcion: convertirSesionArchivo
+* Parametros:
+* - Sesion origen: Sesion del programa que se quiere guardar.
+* - SesionArchivo &destino: Registro que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Copia el identificador y las cantidades de la sesion.
+* Convierte los numeros del historial y los jugadores
+* a las estructuras utilizadas para el archivo.
+* Recibe una sesion con sus cantidades previamente validadas.
+****************************************************/
 void convertirSesionArchivo(Sesion origen, SesionArchivo &destino) {
    SesionArchivo aux = {};
    
@@ -133,7 +237,20 @@ void convertirSesionArchivo(Sesion origen, SesionArchivo &destino) {
    
    destino = aux;
 }
-						   
+   
+/****************************************************
+* Funcion: convertirSesion
+* Parametros:
+* - SesionArchivo origen: Sesion recuperada del archivo.
+* - Sesion &destino: Sesion del programa que recibe los datos.
+* Retorna:
+* - void: No devuelve un valor; modifica destino.
+* Descripcion:
+* Copia el identificador y las cantidades de la sesion.
+* Reconstruye el historial y los jugadores mediante
+* las funciones de conversion.
+* Recibe un registro previamente validado.
+****************************************************/
 void convertirSesion(SesionArchivo origen, Sesion &destino) {
    destino.idSesion = origen.idSesion;
    destino.totalGiros = origen.totalGiros;
@@ -148,6 +265,16 @@ void convertirSesion(SesionArchivo origen, Sesion &destino) {
    }
 }
 
+/****************************************************
+* Funcion: liberarLista
+* Parametros:
+* - ptrNodo &lista: Cabeza de la lista que se quiere vaciar.
+* Retorna:
+* - void: No devuelve un valor; deja lista en NULL.
+* Descripcion:
+* Guarda el nodo actual, avanza al siguiente y elimina
+* el anterior con delete. Repite hasta vaciar la lista.
+****************************************************/
 void liberarLista(ptrNodo &lista) {
 	while (lista != NULL) {
 		ptrNodo aux = lista;
@@ -156,6 +283,21 @@ void liberarLista(ptrNodo &lista) {
 	}
 }
 
+/****************************************************
+* Funcion: guardarSesiones
+* Parametros:
+* - ptrNodo lista: Cabeza de la lista de sesiones.
+* - const char *nombreArchivo: Nombre o ruta del archivo destino.
+* Retorna:
+* - bool: true si el guardado termina sin errores detectados;
+*   false si falla la validacion, apertura, escritura o cierre.
+* Descripcion:
+* Valida las cantidades de las sesiones y abre el archivo
+* binario reemplazando su contenido anterior.
+* Recorre la lista, convierte cada sesion y la escribe.
+* Si la lista esta vacia, genera un archivo vacio.
+* Una falla durante la escritura puede dejarlo incompleto.
+****************************************************/
 bool guardarSesiones(ptrNodo lista, const char *nombreArchivo) {
 	bool exito = true;	
 	ptrNodo actual = lista;
@@ -202,6 +344,24 @@ bool guardarSesiones(ptrNodo lista, const char *nombreArchivo) {
 	
 }
 
+/****************************************************
+* Funcion: cargarSesiones
+* Parametros:
+* - ptrNodo &lista: Lista a la que se agregan las sesiones.
+* - const char *nombreArchivo: Nombre o ruta del archivo a leer.
+* Retorna:
+* - bool: true si la lectura termina correctamente;
+*   false si no puede abrirse o contiene registros invalidos
+*   o incompletos, o se produce un error de lectura.
+* Descripcion:
+* Lee los registros, valida sus cantidades y los convierte
+* en nodos de una lista temporal.
+* Si termina correctamente, une la temporal al final
+* de la lista actual. Si falla, elimina la temporal
+* y conserva la lista original.
+* Un archivo vacio se acepta sin agregar nodos.
+* No controla sesiones ni identificadores repetidos.
+****************************************************/
 bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 	
 	bool exito = true;
@@ -263,6 +423,18 @@ bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 }
 
 
+/****************************************************
+* Funcion: opcionCargarArchivo
+* Parametros:
+* - ptrNodo &listaSesiones: Lista que recibe las sesiones.
+* - string &nombreArchivo: Archivo que se utilizara al guardar.
+* Retorna:
+* - void: No devuelve un valor.
+* Descripcion:
+* Pide el nombre o ruta del archivo y llama a cargarSesiones.
+* Si la carga funciona, recuerda el archivo elegido como
+* destino del guardado. Muestra un mensaje con el resultado.
+****************************************************/
 void opcionCargarArchivo(ptrNodo &listaSesiones, string &nombreArchivo) {
 	string archivoElegido;
 	
@@ -281,6 +453,20 @@ void opcionCargarArchivo(ptrNodo &listaSesiones, string &nombreArchivo) {
 	}
 }
 
+/****************************************************
+* Funcion: guardarAlSalir
+* Parametros:
+* - ptrNodo lista: Lista completa de sesiones a guardar.
+* - string &nombreArchivo: Nombre o ruta del archivo destino.
+* Retorna:
+* - bool: true si pudo guardar; false si no pudo generar
+*   el nombre automatico o fallo el guardado.
+* Descripcion:
+* Si el nombre esta vacio, genera uno con fecha y hora
+* en formato AAAA-MM-DD-HH-MM-SS.bin.
+* Llama a guardarSesiones y muestra el resultado.
+* Guarda los datos, pero no termina el programa.
+****************************************************/
 bool guardarAlSalir(ptrNodo lista, string &nombreArchivo) {
 	bool exito = true;
 	
@@ -323,6 +509,20 @@ bool guardarAlSalir(ptrNodo lista, string &nombreArchivo) {
 	return exito;
 }
 
+/****************************************************
+* Funcion: opcionSalir
+* Parametros:
+* - ptrNodo lista: Sesiones que se guardaran al confirmar.
+* - string &nombreArchivo: Archivo que se utilizara al guardar.
+* Retorna:
+* - bool: true si se confirma la salida y el guardado funciona;
+*   false si se cancela o falla el guardado.
+* Descripcion:
+* Pide confirmar la salida con X o x.
+* Si se confirma, llama a guardarAlSalir.
+* Devuelve el resultado para que main decida si termina
+* el programa o vuelve al menu.
+****************************************************/
 bool opcionSalir(ptrNodo lista, string &nombreArchivo){
 	const int ANCHO_VENTANA = 150;
 	bool salir = false;
