@@ -345,6 +345,60 @@ bool guardarSesiones(ptrNodo lista, const char *nombreArchivo) {
 }
 
 /****************************************************
+* Funcion: obtenerIdSinRepetir
+* Parametros:
+* - ptrNodo lista: Sesiones que ya estan en memoria.
+* - ptrNodo temporal: Sesiones leidas durante esta carga.
+* - int idOriginal: Identificador que viene del archivo.
+* Retorna:
+* - int: Identificador que no se repite entre ambas listas.
+* Descripcion:
+* Busca si el identificador ya existe y obtiene la ID mayor.
+* Si esta repetido, devuelve la mayor mas uno.
+* Si no esta repetido, conserva el identificador original.
+****************************************************/
+int obtenerIdSinRepetir(ptrNodo lista, ptrNodo temporal, int idOriginal) {
+	bool repetida = false;
+	int mayorId = 0;
+	
+	ptrNodo actual = lista;
+	
+	while (actual != NULL) {
+		if (actual->info.idSesion == idOriginal) {
+			repetida = true;
+		}
+		
+		if (actual->info.idSesion > mayorId) {
+			mayorId = actual->info.idSesion;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	actual = temporal;
+	
+	while (actual != NULL) {
+		if (actual->info.idSesion == idOriginal) {
+			repetida = true;
+		}
+		
+		if (actual->info.idSesion > mayorId) {
+			mayorId = actual->info.idSesion;
+		}
+		
+		actual = actual->sig;
+	}
+	
+	int idElegida = idOriginal;
+	
+	if (repetida) {
+		idElegida = mayorId + 1;
+	}
+	
+	return idElegida;
+}
+
+/****************************************************
 * Funcion: cargarSesiones
 * Parametros:
 * - ptrNodo &lista: Lista a la que se agregan las sesiones.
@@ -360,7 +414,8 @@ bool guardarSesiones(ptrNodo lista, const char *nombreArchivo) {
 * de la lista actual. Si falla, elimina la temporal
 * y conserva la lista original.
 * Un archivo vacio se acepta sin agregar nodos.
-* No controla sesiones ni identificadores repetidos.
+* Si una ID ya existe, asigna una nueva mediante
+* obtenerIdSinRepetir. No evita cargar sesiones duplicadas.
 ****************************************************/
 bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 	
@@ -388,6 +443,9 @@ bool cargarSesiones(ptrNodo &lista, const char *nombreArchivo) {
 				}
 				ptrNodo nuevo = new Nodo;
 				convertirSesion(datos, nuevo->info);
+				
+				nuevo->info.idSesion = obtenerIdSinRepetir(lista, temporal, nuevo->info.idSesion);
+				
 				nuevo->sig = NULL;
 				
 				if (temporal == NULL) {

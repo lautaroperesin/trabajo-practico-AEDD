@@ -112,86 +112,282 @@ void inicioSesion(Jugador jugadores[], int &cant, Numero ruleta[]){
 	cargarJugadores(jugadores, cant);
 }
 
-
+/****************************************************
+* Funcion: getFichas
+* Parametros:
+* - Jugador j: Jugador que se consulta.
+* Retorna:
+* - int: Cantidad de fichas del jugador.
+* Descripcion:
+* Devuelve el valor del campo fichas.
+****************************************************/
 int getFichas(Jugador j) {
 	return j.fichas;
 }
 
 
+/****************************************************
+* Funcion: getFichasJugadas
+* Parametros:
+* - Apuesta a: Apuesta que se consulta.
+* Retorna:
+* - int: Cantidad de fichas apostadas.
+* Descripcion:
+* Devuelve el valor del campo fichasJugadas.
+****************************************************/
 int getFichasJugadas(Apuesta a) {
 	return a.fichasJugadas;
 }
 
+/****************************************************
+* Funcion: getNumeroApostado
+* Parametros:
+* - Apuesta a: Apuesta que se consulta.
+* Retorna:
+* - int: Numero elegido en la apuesta.
+* Descripcion:
+* Devuelve el valor del campo numeroApostado.
+****************************************************/
 int getNumeroApostado(Apuesta a) {
 	return a.numeroApostado;
 }
 
+/****************************************************
+* Funcion: getColorApostado
+* Parametros:
+* - Apuesta a: Apuesta que se consulta.
+* Retorna:
+* - char: Color elegido en la apuesta.
+* Descripcion:
+* Devuelve el valor del campo colorApostado.
+****************************************************/
 char getColorApostado(Apuesta a) {
 	return a.colorApostado;
 }
 
+/****************************************************
+* Funcion: getTipoApuesta
+* Parametros:
+* - Apuesta a: Apuesta que se consulta.
+* Retorna:
+* - int: Tipo de apuesta registrado.
+* Descripcion:
+* Devuelve el valor del campo tipoApuesta.
+****************************************************/
 int getTipoApuesta(Apuesta a) {
 	return a.tipoApuesta;
 }
 
 
+/****************************************************
+* Funcion: getNombre
+* Parametros:
+* - Jugador j: Jugador que se consulta.
+* Retorna:
+* - string: Nombre del jugador.
+* Descripcion:
+* Devuelve el texto guardado en el campo nombre.
+****************************************************/
 string getNombre(Jugador j) {
 	return j.nombre;
 }
 
+/****************************************************
+* Funcion: getApuestaEnPosicion
+* Parametros:
+* - Jugador j: Jugador cuyas apuestas se consultan.
+* - int pos: Posicion de la apuesta que se quiere obtener.
+* Retorna:
+* - Apuesta: Copia de la apuesta ubicada en esa posicion.
+* Descripcion:
+* Devuelve un elemento del arreglo de apuestas.
+* La posicion recibida debe corresponder a una apuesta
+* registrada, porque la funcion no comprueba sus limites.
+****************************************************/
 Apuesta getApuestaEnPosicion(Jugador j, int pos) {
 	return j.apuestas[pos];
 }
 
+/****************************************************
+* Funcion: getTlApuestas
+* Parametros:
+* - Jugador j: Jugador que se consulta.
+* Retorna:
+* - int: Cantidad de apuestas registradas.
+* Descripcion:
+* Devuelve el valor del campo tlApuestas, que indica
+* cuantas posiciones del arreglo de apuestas se utilizan.
+****************************************************/
 int getTlApuestas(Jugador j) {
 	return j.tlApuestas;
 }
 
+/****************************************************
+* Funcion: getVictorias
+* Parametros:
+* - Jugador j: Jugador que se consulta.
+* Retorna:
+* - int: Cantidad de victorias del jugador.
+* Descripcion:
+* Devuelve el valor del campo victorias.
+****************************************************/
 int getVictorias(Jugador j) {
 	return j.victorias;
 }
 
+/****************************************************
+* Funcion: getDerrotas
+* Parametros:
+* - Jugador j: Jugador que se consulta.
+* Retorna:
+* - int: Cantidad de derrotas del jugador.
+* Descripcion:
+* Devuelve el valor del campo derrotas.
+****************************************************/
 int getDerrotas(Jugador j) {
 	return j.derrotas;
 }
 
-
+/****************************************************
+* Funcion: setFichasJugadas
+* Parametros:
+* - Apuesta &a: Apuesta que se modifica.
+* - int fichas: Cantidad de fichas que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica a.
+* Descripcion:
+* Asigna el dato recibido al campo fichasJugadas.
+****************************************************/
 void setFichasJugadas(Apuesta &a, int fichas) {
 	a.fichasJugadas = fichas;
 }
 
+/****************************************************
+* Funcion: setNumeroApostado
+* Parametros:
+* - Apuesta &a: Apuesta que se modifica.
+* - int numero: Numero que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica a.
+* Descripcion:
+* Asigna el dato recibido al campo numeroApostado.
+****************************************************/
 void setNumeroApostado(Apuesta &a, int numero) {
 	a.numeroApostado = numero;
 }
 
+/****************************************************
+* Funcion: setColorApostado
+* Parametros:
+* - Apuesta &a: Apuesta que se modifica.
+* - char color: Color que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica a.
+* Descripcion:
+* Asigna el dato recibido al campo colorApostado.
+****************************************************/
 void setColorApostado(Apuesta &a, char color) {
 	a.colorApostado = color;
 }
 
+/****************************************************
+* Funcion: setTipoApuesta
+* Parametros:
+* - Apuesta &a: Apuesta que se modifica.
+* - int tipo: Tipo de apuesta que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica a.
+* Descripcion:
+* Asigna el dato recibido al campo tipoApuesta.
+****************************************************/
 void setTipoApuesta(Apuesta &a, int tipo) {
 	a.tipoApuesta = tipo;
 }
 
+/****************************************************
+* Funcion: setNombre
+* Parametros:
+* - Jugador &j: Jugador que se modifica.
+* - string nombre: Nombre que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Copia el texto recibido al campo nombre del jugador.
+****************************************************/
 void setNombre(Jugador &j, string nombre) {
 	j.nombre = nombre;
 }
 
+/****************************************************
+* Funcion: setFichas
+* Parametros:
+* - Jugador &j: Jugador que se modifica.
+* - int fichas: Cantidad de fichas que se quiere asignar.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Asigna el dato recibido al campo fichas del jugador.
+****************************************************/
 void setFichas(Jugador &j, int fichas) {
 	j.fichas = fichas;
 }
 
+/****************************************************
+* Funcion: setApuestaEnPosicion
+* Parametros:
+* - Jugador &j: Jugador cuyo arreglo se modifica.
+* - Apuesta ap: Apuesta que se quiere copiar.
+* - int pos: Posicion donde se coloca la apuesta.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Copia la apuesta en la posicion indicada del arreglo.
+* No modifica tlApuestas ni comprueba los limites.
+* La posicion debe estar dentro del arreglo.
+****************************************************/
 void setApuestaEnPosicion(Jugador &j, Apuesta ap, int pos) {
 	j.apuestas[pos] = ap;
 }
 
+/****************************************************
+* Funcion: setTlApuestas
+* Parametros:
+* - Jugador &j: Jugador que se modifica.
+* - int tl: Cantidad de apuestas registradas que se asigna.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Asigna el dato recibido al campo tlApuestas.
+* No agrega ni elimina apuestas del arreglo.
+****************************************************/
 void setTlApuestas(Jugador &j, int tl) {
 	j.tlApuestas = tl;
 }
 
+/****************************************************
+* Funcion: setVictorias
+* Parametros:
+* - Jugador &j: Jugador que se modifica.
+* - int victorias: Cantidad de victorias que se asigna.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Asigna el dato recibido al campo victorias.
+****************************************************/
 void setVictorias(Jugador &j, int victorias) {
 	j.victorias = victorias;
 }
 
+/****************************************************
+* Funcion: setDerrotas
+* Parametros:
+* - Jugador &j: Jugador que se modifica.
+* - int derrotas: Cantidad de derrotas que se asigna.
+* Retorna:
+* - void: No devuelve un valor; modifica j.
+* Descripcion:
+* Asigna el dato recibido al campo derrotas.
+****************************************************/
 void setDerrotas(Jugador &j, int derrotas) {
 	j.derrotas = derrotas;
 }

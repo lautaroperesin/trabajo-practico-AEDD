@@ -399,14 +399,26 @@ void efectividadDeJugadores(ptrNodo lista){
 				acumuladorVictorias+=getVictorias(sesion.jugadores[i]);
 				
 			}
-			float efectividad=acumuladorVictorias;
-			efectividad=(efectividad*100)/(acumuladorDerrotas+acumuladorVictorias);
-			stringstream ss;
-			ss << fixed << setprecision(2)<<efectividad;
+			int totalResultados = acumuladorVictorias + acumuladorDerrotas;
 			
-			string texto = ss.str();
-			cout<< centrar(("Sesion #" + to_string(sesion.idSesion)),50)<<centrar(to_string(sesion.jugadoresSesion),50)<<centrar(texto+"%",50)<<endl;
+			string texto;
 			
+			if (totalResultados > 0) {
+				float efectividad =
+					acumuladorVictorias * 100.0 / totalResultados;
+				
+				stringstream ss;
+				ss << fixed << setprecision(2) << efectividad;
+				
+				texto = ss.str() + "%";
+			}
+			else {
+				texto = "Sin apuestas resueltas";
+			}
+			
+			cout << centrar(("Sesion #" + to_string(sesion.idSesion)), 50)
+				<< centrar(to_string(sesion.jugadoresSesion), 50)
+				<< centrar(texto, 50) << endl;
 		}
 		
 		actual = actual->sig;

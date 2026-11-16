@@ -190,7 +190,7 @@ void mostrarHistorial(Numero numeros[],int totalGiros){
 * El algoritmo obtiene el vector de numeros y de forma repetitiva cuenta cada 
 * el tipo al que pertenece cada datos. Posteriormente los muestra por pantalla,
 * para el caso de los datos porcentuales, se los multiplica por 100 y se los
-//* divide por el total.
+* divide por el total.
 * ****************************************************************************************
 */
 void mostrarEstadisticas(Numero numeros[],int totalGiros){
